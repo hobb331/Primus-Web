@@ -1,0 +1,81 @@
+{
+  "entities": {
+    "Lead": {
+      "title": "Lead",
+      "description": "A potential client lead from the website.",
+      "type": "object",
+      "properties": {
+        "phone": {
+          "type": "string",
+          "description": "The mobile number of the lead."
+        },
+        "name": {
+          "type": "string",
+          "description": "The name of the lead."
+        },
+        "business": {
+          "type": "string",
+          "description": "The business name of the lead."
+        },
+        "packageName": {
+          "type": "string",
+          "description": "The name of the package they are interested in."
+        },
+        "packagePrice": {
+          "type": "string",
+          "description": "The price of the package."
+        },
+        "customRequirements": {
+          "type": "object",
+          "description": "Custom requirements for the Custom Pack.",
+          "properties": {
+            "reels": { "type": "number" },
+            "posts": { "type": "number" },
+            "platforms": { "type": "number" },
+            "reports": { "type": "number" }
+          }
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "When the lead was created."
+        }
+      },
+      "required": ["phone", "name", "business", "packageName", "packagePrice", "createdAt"]
+    }
+  },
+  "firestore": {
+    "/leads/{leadId}": {
+      "schema": "Lead",
+      "description": "General collection of leads received from the website."
+    },
+    "/starter_leads/{leadId}": {
+      "schema": "Lead",
+      "description": "Leads for the Signature Starter Pack."
+    },
+    "/pro_leads/{leadId}": {
+      "schema": "Lead",
+      "description": "Leads for the Pro Growth Pack."
+    },
+    "/prestige_leads/{leadId}": {
+      "schema": "Lead",
+      "description": "Leads for the Elite Prestige Pack."
+    },
+    "/custom_leads/{leadId}": {
+      "schema": "Lead",
+      "description": "Leads for the Custom Pack."
+    },
+    "/videography_leads/{leadId}": {
+      "schema": "Lead",
+      "description": "Leads for Elite Videography services."
+    },
+    "/website_leads/{leadId}": {
+      "schema": "Lead",
+      "description": "Leads for Website Design and Development services."
+    },
+    "/mobile_app_leads/{leadId}": {
+      "schema": "Lead",
+      "description": "Leads for Mobile App Development services."
+    }
+  }
+}

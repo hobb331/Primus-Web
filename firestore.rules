@@ -1,0 +1,116 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // ===============================================================
+    // Assumed Data Model
+    // ===============================================================
+    //
+    // Collection: leads (and variants)
+    // Document ID: auto-generated
+    // Fields:
+    //   - name: string (required, < 100 chars)
+    //   - phone: string (required, < 20 chars)
+    //   - business: string (required, < 100 chars)
+    //   - packageName: string (required, < 100 chars)
+    //   - packagePrice: string (required, < 50 chars)
+    //   - customRequirements: map (optional)
+    //     - reels: number
+    //     - posts: number
+    //     - platforms: number
+    //     - reports: number
+    //   - createdAt: timestamp (required)
+    //
+    // Collection: users
+    // Document ID: userId (uid)
+    // Fields:
+    //   - role: string (required, 'admin' or 'client')
+    //   - email: string (required)
+    //
+    // ===============================================================
+
+    // ===============================================================
+    // Helper Functions
+    // ===============================================================
+
+    function isAuthenticated() {
+      return request.auth != null;
+    }
+
+    function isAdmin() {
+      return isAuthenticated() &&
+        (get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role == 'admin' ||
+          (request.auth.token.email == "mohabzhran8@gmail.com" && request.auth.token.email_verified == true));
+    }
+
+    function isValidLead(data) {
+      let requiredFields = ['name', 'phone', 'business', 'packageName', 'packagePrice', 'createdAt'];
+      let allowedFields = requiredFields.concat(['customRequirements']);
+      
+      return data.keys().hasAll(requiredFields) &&
+             data.keys().hasOnly(allowedFields) &&
+             data.name is string && data.name.size() > 0 && data.name.size() < 100 &&
+             data.phone is string && data.phone.size() > 0 && data.phone.size() < 20 &&
+             data.business is string && data.business.size() > 0 && data.business.size() < 100 &&
+             data.packageName is string && data.packageName.size() > 0 && data.packageName.size() < 100 &&
+             data.packagePrice is string && data.packagePrice.size() > 0 && data.packagePrice.size() < 50 &&
+             data.createdAt is timestamp &&
+             (!('customRequirements' in data) || (
+               data.customRequirements is map &&
+               data.customRequirements.keys().hasOnly(['reels', 'posts', 'platforms', 'reports']) &&
+               data.customRequirements.reels is number &&
+               data.customRequirements.posts is number &&
+               data.customRequirements.platforms is number &&
+               data.customRequirements.reports is number
+             ));
+    }
+
+    // ===============================================================
+    // Rules
+    // ===============================================================
+
+    match /starter_leads/{leadId} {
+      allow create: if isValidLead(request.resource.data);
+      allow read, update, delete: if isAdmin();
+    }
+    match /pro_leads/{leadId} {
+      allow create: if isValidLead(request.resource.data);
+      allow read, update, delete: if isAdmin();
+    }
+    match /prestige_leads/{leadId} {
+      allow create: if isValidLead(request.resource.data);
+      allow read, update, delete: if isAdmin();
+    }
+    match /custom_leads/{leadId} {
+      allow create: if isValidLead(request.resource.data);
+      allow read, update, delete: if isAdmin();
+    }
+    match /videography_leads/{leadId} {
+      allow create: if isValidLead(request.resource.data);
+      allow read, update, delete: if isAdmin();
+    }
+    match /website_leads/{leadId} {
+      allow create: if isValidLead(request.resource.data);
+      allow read, update, delete: if isAdmin();
+    }
+    match /mobile_app_leads/{leadId} {
+      allow create: if isValidLead(request.resource.data);
+      allow read, update, delete: if isAdmin();
+    }
+
+    match /leads/{leadId} {
+      // Anyone can create a lead (unauthenticated is allowed for lead forms)
+      allow create: if isValidLead(request.resource.data);
+      
+      // Only admins can read or manage leads
+      allow read, update, delete: if isAdmin();
+    }
+
+    match /users/{userId} {
+      allow read: if isAuthenticated() && (request.auth.uid == userId || isAdmin());
+      // Only admins can create/update user roles
+      allow write: if isAdmin();
+    }
+  }
+}
