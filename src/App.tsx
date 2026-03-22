@@ -423,19 +423,6 @@ const Navbar = () => {
             </button>
           ))}
         </div>
-
-        <div className="md:hidden">
-          <motion.button 
-            whileHover={{ scale: 1.1 }}
-            whileTap={{ scale: 0.9 }}
-            className="text-white"
-            aria-label="Toggle Navigation Menu"
-          >
-            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M4 6h16M4 12h16m-7 6h7" />
-            </svg>
-          </motion.button>
-        </div>
       </div>
     </nav>
   );
@@ -844,6 +831,11 @@ const OrderModal = ({ pkg, onClose }: { pkg: any, onClose: () => void }) => {
       return;
     }
 
+    if (phone.length !== 10) {
+      setError("Mobile number must be exactly 10 digits.");
+      return;
+    }
+
     setIsSubmitting(true);
     setError(null);
     
@@ -853,7 +845,7 @@ const OrderModal = ({ pkg, onClose }: { pkg: any, onClose: () => void }) => {
       try {
         const leadData: any = {
           name,
-          phone,
+          phone: `+20 ${phone}`,
           business: category,
           packageName: pkg.name,
           packagePrice: pkg.price,
@@ -920,18 +912,20 @@ const OrderModal = ({ pkg, onClose }: { pkg: any, onClose: () => void }) => {
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
       className="fixed inset-0 z-[100] flex items-center justify-center px-6 bg-brand-bg/95 backdrop-blur-sm"
+      onClick={onClose}
     >
       <motion.div 
         initial={{ scale: 0.95, opacity: 0 }}
         animate={{ scale: 1, opacity: 1 }}
         exit={{ scale: 0.95, opacity: 0 }}
         className="bg-brand-card border border-white/20 max-w-md w-full relative max-h-[90vh] flex flex-col"
+        onClick={(e) => e.stopPropagation()}
       >
         <motion.button 
           onClick={onClose}
           whileHover={{ scale: 1.1, rotate: 90 }}
           whileTap={{ scale: 0.9 }}
-          className="absolute top-6 right-6 opacity-40 hover:opacity-100 transition-all z-10"
+          className="absolute top-6 right-6 opacity-40 hover:opacity-100 transition-opacity z-10"
         >
           <X size={20} strokeWidth={1.5} />
         </motion.button>
@@ -946,7 +940,7 @@ const OrderModal = ({ pkg, onClose }: { pkg: any, onClose: () => void }) => {
 
             <form onSubmit={handleSubmit} className="space-y-6">
               <div>
-                <label className="block text-[8px] uppercase tracking-[0.3em] opacity-40 mb-3">Your Name</label>
+                <label className="block text-[8px] uppercase tracking-[0.3em] opacity-40 mb-3">Your name</label>
                 <input 
                   type="text" 
                   required 
@@ -961,22 +955,7 @@ const OrderModal = ({ pkg, onClose }: { pkg: any, onClose: () => void }) => {
               </div>
 
               <div>
-                <label className="block text-[8px] uppercase tracking-[0.3em] opacity-40 mb-3">Your Mobile Number</label>
-                <input 
-                  type="tel" 
-                  required 
-                  value={phone}
-                  onChange={(e) => {
-                    const val = e.target.value.replace(/\D/g, '');
-                    setPhone(val);
-                  }}
-                  className="w-full bg-transparent border border-white/20 px-4 py-4 text-sm font-light focus:border-white outline-none transition-colors"
-                  placeholder="+20 ..."
-                />
-              </div>
-
-              <div>
-                <label className="block text-[8px] uppercase tracking-[0.3em] opacity-40 mb-3">Business Name</label>
+                <label className="block text-[8px] uppercase tracking-[0.3em] opacity-40 mb-3">business category</label>
                 <input 
                   type="text" 
                   required 
@@ -986,8 +965,27 @@ const OrderModal = ({ pkg, onClose }: { pkg: any, onClose: () => void }) => {
                     setCategory(val);
                   }}
                   className="w-full bg-transparent border border-white/20 px-4 py-4 text-sm font-light focus:border-white outline-none transition-colors"
-                  placeholder="e.g. Primus Agency"
+                  placeholder="e.g. Real Estate, E-commerce, etc."
                 />
+              </div>
+
+              <div>
+                <label className="block text-[8px] uppercase tracking-[0.3em] opacity-40 mb-3">mobile number</label>
+                <div className="flex items-center w-full bg-transparent border border-white/20 px-4 py-4 text-sm font-light focus-within:border-white transition-colors">
+                  <span className="text-white opacity-60 mr-2">+20</span>
+                  <input 
+                    type="tel" 
+                    required 
+                    maxLength={10}
+                    value={phone}
+                    onChange={(e) => {
+                      const val = e.target.value.replace(/\D/g, '').slice(0, 10);
+                      setPhone(val);
+                    }}
+                    className="w-full bg-transparent outline-none"
+                    placeholder="10..."
+                  />
+                </div>
               </div>
 
               {pkg.isCustom && (

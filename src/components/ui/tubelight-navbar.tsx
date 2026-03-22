@@ -102,7 +102,7 @@ export function NavBar({ items, className }: NavBarProps) {
   return (
     <nav
       className={cn(
-        "fixed top-6 right-6 z-[60]",
+        "fixed z-[60] top-20 left-1/2 -translate-x-1/2 md:top-6 md:right-6 md:left-auto md:translate-x-0",
         className,
       )}
       aria-label="Secondary Navigation"
