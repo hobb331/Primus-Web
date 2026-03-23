@@ -29,6 +29,7 @@ import * as THREE from 'three';
 import { db } from './firebase';
 import { collection, addDoc, serverTimestamp, getDocFromServer, doc } from 'firebase/firestore';
 import { auth } from './firebase';
+import { SpeedInsights } from '@vercel/speed-insights/react';
 
 // --- Types ---
 enum OperationType {
@@ -1088,6 +1089,7 @@ export default function App() {
           />
         )}
       </AnimatePresence>
+      <SpeedInsights />
     </div>
   );
 }
