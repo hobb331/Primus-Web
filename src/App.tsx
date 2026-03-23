@@ -29,7 +29,6 @@ import * as THREE from 'three';
 import { db } from './firebase';
 import { collection, addDoc, serverTimestamp, getDocFromServer, doc } from 'firebase/firestore';
 import { auth } from './firebase';
-import { SpeedInsights } from '@vercel/speed-insights/react';
 
 // --- Types ---
 enum OperationType {
@@ -947,7 +946,7 @@ const OrderModal = ({ pkg, onClose }: { pkg: any, onClose: () => void }) => {
                   required 
                   value={name}
                   onChange={(e) => {
-                    const val = e.target.value.replace(/[^a-zA-Z\s]/g, '');
+                    const val = e.target.value.replace(/[^a-zA-Z\s\u0600-\u06FF]/g, '');
                     setName(val);
                   }}
                   className="w-full bg-transparent border border-white/20 px-4 py-4 text-sm font-light focus:border-white outline-none transition-colors"
@@ -962,7 +961,7 @@ const OrderModal = ({ pkg, onClose }: { pkg: any, onClose: () => void }) => {
                   required 
                   value={category}
                   onChange={(e) => {
-                    const val = e.target.value.replace(/[^a-zA-Z0-9\s]/g, '');
+                    const val = e.target.value.replace(/[^a-zA-Z0-9\s\u0600-\u06FF]/g, '');
                     setCategory(val);
                   }}
                   className="w-full bg-transparent border border-white/20 px-4 py-4 text-sm font-light focus:border-white outline-none transition-colors"
@@ -1089,7 +1088,6 @@ export default function App() {
           />
         )}
       </AnimatePresence>
-      <SpeedInsights />
     </div>
   );
 }
