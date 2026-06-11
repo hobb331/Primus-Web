@@ -1,0 +1,9 @@
+# local design archive — not part of the live site
+index-v2.html
+
+# local verification artifacts
+loader-shot.png
+
+# OS noise
+Thumbs.db
+.DS_Store
