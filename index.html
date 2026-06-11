@@ -187,6 +187,10 @@
   #loader.done .loader-mark{animation:none;opacity:0;filter:blur(6px)}
   #loader.done .loader-word,#loader.done .loader-line{animation:none;opacity:0}
   header.hero,section,.marquee,footer{position:relative;z-index:1}
+  /* dark halo keeps type legible when the bright 3D mark passes behind it
+     (invisible against the dark bg — the model itself stays untouched) */
+  .hero,section{text-shadow:0 0 2px rgba(12,14,15,.95),0 2px 12px rgba(12,14,15,.85),0 0 26px rgba(12,14,15,.7)}
+  .btn,.pack .badge{text-shadow:none}
   .hero>*{position:relative;z-index:2}
   .hero::after{
     content:"";position:absolute;inset:0;z-index:1;pointer-events:none;
