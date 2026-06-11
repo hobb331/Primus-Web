@@ -331,17 +331,6 @@
   .btn.solid:hover{background:transparent;color:var(--porcelain)}
   .btn.ghost-btn{border-color:var(--line);color:var(--silver)}
   .btn.ghost-btn:hover{border-color:var(--porcelain);color:var(--porcelain);background:transparent}
-  .scroll-hint{
-    position:absolute;bottom:30px;left:50%;transform:translateX(-50%);
-    color:var(--silver-dim);font-size:10px;letter-spacing:.34em;text-indent:.34em;
-    text-transform:uppercase;line-height:1;
-  }
-  .scroll-hint::after{
-    content:"";display:block;width:1px;height:36px;background:linear-gradient(var(--silver-dim),transparent);
-    margin:14px auto 0;
-  }
-  @media(max-height:760px){.scroll-hint{display:none}}
-
   /* ---------------- MARQUEE ---------------- */
   .marquee{
     border-top:1px solid var(--line);border-bottom:1px solid var(--line);
@@ -663,7 +652,6 @@
       <a href="#packages" class="btn ghost-btn">View Packages</a>
     </div>
   </div>
-  <div class="scroll-hint fade-in" style="--d:1.4s">Scroll</div>
 </header>
 
 <!-- ================ MARQUEE ================ -->
