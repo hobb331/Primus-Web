@@ -978,6 +978,11 @@
         obs.unobserve(en.target);
         const target = parseInt(en.target.textContent.replace(/[^\d]/g, ''), 10);
         if (reducedM){ en.target.textContent = target.toLocaleString('en-US'); return; }
+        // freeze the final width so the card never reflows while counting
+        const w = en.target.getBoundingClientRect().width;
+        en.target.style.display = 'inline-block';
+        en.target.style.minWidth = Math.ceil(w) + 'px';
+        en.target.style.textAlign = 'right';
         const t0 = performance.now(), dur = 1400;
         (function tick(now){
           const p = Math.min((now - t0) / dur, 1), e = 1 - Math.pow(1 - p, 3);
