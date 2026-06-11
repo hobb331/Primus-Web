@@ -1,5 +1,4 @@
-User-agent: *
+﻿User-agent: *
 Allow: /
 
-# Replace YOUR-DOMAIN with the live domain after deployment
-Sitemap: https://www.YOUR-DOMAIN.com/sitemap.xml
+Sitemap: https://primusdigitalagency.vercel.app/sitemap.xml

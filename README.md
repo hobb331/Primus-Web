@@ -14,24 +14,26 @@ Official one-page website for **Primus Digital**, a premium digital marketing ag
 index.html    the entire site
 robots.txt    crawler rules + sitemap pointer
 sitemap.xml   single-URL sitemap
+vercel.json   static-serve config (no build step)
 .nojekyll     tells GitHub Pages to serve files as-is
 ```
 
-## Deploy (GitHub Pages)
+## Deploy
 
-1. Push this repo to GitHub.
-2. Repo → **Settings → Pages** → Source: *Deploy from a branch* → Branch: `main`, folder `/ (root)` → Save.
-3. The site goes live at `https://<username>.github.io/<repo>/` within a minute or two.
+**Vercel (current):** the repo is connected to Vercel; every push to `main` deploys to
+[primusdigitalagency.vercel.app](https://primusdigitalagency.vercel.app/). `vercel.json` pins the project
+to static serving — no framework, no build command.
 
-## After deployment — replace the domain placeholders
+**GitHub Pages (alternative):** Repo → **Settings → Pages** → Source: *Deploy from a branch* →
+Branch: `main`, folder `/ (root)`.
 
-Search for `YOUR-DOMAIN` and set the live URL in **three places**:
+## If the domain changes (e.g. a custom domain)
 
-1. `index.html` — the commented-out `<link rel="canonical">` / `og:url` / `og:image` block in `<head>` (uncomment it)
-2. `robots.txt` — the `Sitemap:` line
-3. `sitemap.xml` — the `<loc>` entry
+Update the URL in three places: the `canonical`/`og:url` tags in `index.html`'s `<head>`,
+the `Sitemap:` line in `robots.txt`, and the `<loc>` entry in `sitemap.xml`.
 
-Then submit `sitemap.xml` in [Google Search Console](https://search.google.com/search-console) and create a [Google Business Profile](https://business.google.com/) for local search.
+Next growth steps: submit `sitemap.xml` in [Google Search Console](https://search.google.com/search-console)
+and create a [Google Business Profile](https://business.google.com/) for local search in Zagazig.
 
 ## Local preview
 
