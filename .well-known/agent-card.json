@@ -1,0 +1,42 @@
+{
+  "protocolVersion": "0.3.0",
+  "name": "Primus Digital Concierge",
+  "description": "Information agent for Primus Digital, a digital marketing agency in Zagazig, Sharqia, Egypt. Answers questions about services, packages, EGP pricing, areas served, and how to start an engagement (WhatsApp free-audit flow). Responds synchronously in plain text; understands English and Arabic keywords.",
+  "version": "1.0.0",
+  "url": "https://primusdigitalagency.vercel.app/api/a2a",
+  "preferredTransport": "JSONRPC",
+  "additionalInterfaces": [
+    { "url": "https://primusdigitalagency.vercel.app/api/a2a", "transport": "JSONRPC" }
+  ],
+  "supportedInterfaces": [
+    { "url": "https://primusdigitalagency.vercel.app/api/a2a", "transport": "JSONRPC" }
+  ],
+  "provider": {
+    "organization": "Primus Digital",
+    "url": "https://primusdigitalagency.vercel.app/"
+  },
+  "capabilities": {
+    "streaming": false,
+    "pushNotifications": false,
+    "stateTransitionHistory": false
+  },
+  "defaultInputModes": ["text/plain"],
+  "defaultOutputModes": ["text/plain"],
+  "skills": [
+    {
+      "id": "agency-info",
+      "name": "Agency information",
+      "description": "Answers questions about Primus Digital's services, packages, pricing in EGP, and areas served in Egypt.",
+      "tags": ["marketing", "agency", "egypt", "zagazig", "pricing"],
+      "examples": ["What packages do you offer?", "How much does social media management cost?", "ما هي أسعار الباقات؟"]
+    },
+    {
+      "id": "start-engagement",
+      "name": "Start an engagement",
+      "description": "Provides the WhatsApp free-audit flow and contact channels to begin working with the agency.",
+      "tags": ["contact", "whatsapp", "inquiry"],
+      "examples": ["How do I contact Primus Digital?", "I want a free audit of my page"]
+    }
+  ],
+  "documentationUrl": "https://primusdigitalagency.vercel.app/llms.txt"
+}

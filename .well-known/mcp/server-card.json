@@ -1,0 +1,27 @@
+{
+  "protocolVersion": "2025-06-18",
+  "serverInfo": {
+    "name": "primus-digital-info",
+    "title": "Primus Digital — Agency Info",
+    "version": "1.0.0",
+    "description": "Read-only MCP server for Primus Digital, a digital marketing agency in Zagazig, Sharqia, Egypt. Exposes the agency's packages and EGP pricing, service catalog, contact channels, and a WhatsApp inquiry-link builder."
+  },
+  "transport": {
+    "type": "streamable-http",
+    "endpoint": "https://primusdigitalagency.vercel.app/api/mcp"
+  },
+  "transports": [
+    { "type": "streamable-http", "url": "https://primusdigitalagency.vercel.app/api/mcp" }
+  ],
+  "capabilities": {
+    "tools": { "listChanged": false }
+  },
+  "authentication": { "required": false },
+  "tools": [
+    { "name": "get_packages", "description": "List marketing packages with monthly EGP pricing." },
+    { "name": "get_services", "description": "List core and exclusive services plus areas served." },
+    { "name": "get_contact_options", "description": "Get WhatsApp, email, and social contact channels." },
+    { "name": "get_inquiry_link", "description": "Build a prefilled WhatsApp link for the free page-audit flow." }
+  ],
+  "documentation": "https://primusdigitalagency.vercel.app/llms.txt"
+}

@@ -1,0 +1,8 @@
+{
+  "resource": "https://primusdigitalagency.vercel.app/",
+  "authorization_servers": [],
+  "scopes_supported": [],
+  "bearer_methods_supported": [],
+  "resource_name": "Primus Digital — public website and info endpoints",
+  "resource_documentation": "https://primusdigitalagency.vercel.app/auth.md"
+}
