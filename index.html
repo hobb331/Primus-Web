@@ -1062,6 +1062,7 @@ addEventListener('resize', () => {
   if (innerWidth === lastW && Math.abs(innerHeight - lastH) < 140) return;
   lastW = innerWidth; lastH = innerHeight;
   resize();
+  calcAvoid();
 }, {passive:true});
 
 // lighting — single porcelain key + cool rim, chiaroscuro
@@ -1115,6 +1116,20 @@ function progress(){
 addEventListener('scroll', () => { tsp = progress(); }, {passive:true});
 tsp = progress();
 
+// From the FAQ to the end of the page, bare copy sits directly on the canvas
+// (everywhere else the text lives on opaque cards). Through that stretch the
+// mark steps into the side margin and one step deeper — fully visible, same
+// material and light, just never parked behind the reading column.
+const faqEl = document.getElementById('faq');
+let avoidStart = .75;
+function calcAvoid(){
+  const h = document.documentElement.scrollHeight - innerHeight;
+  if (faqEl && h > 0) avoidStart = Math.max(.05, (faqEl.offsetTop - innerHeight * .85) / h);
+}
+calcAvoid();
+addEventListener('load', calcAvoid);
+document.querySelectorAll('.faq details').forEach(d => d.addEventListener('toggle', calcAvoid));
+
 const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
 const clock = new THREE.Clock();
 const heroInner = document.querySelector('.hero-inner');
@@ -1137,9 +1152,23 @@ function frame(){
   // scroll journey: a calm, partial revolution, drifting gently across the frame
   group.rotation.y = sp * Math.PI * 1.6 + mx * .55 + (reduced ? 0 : t * .045);
   group.rotation.x = my * .35 + Math.sin(sp * Math.PI * 2) * .14;
-  group.position.x = Math.sin(sp * Math.PI * 1.5) * 1.9;
+  let gx = Math.sin(sp * Math.PI * 1.5) * 1.9;
+  let gz = -1.2 + Math.sin(sp * Math.PI) * .9;
+
+  // text avoidance: blend toward a slot in the left margin, sized from the
+  // live viewport so the mark clears the column wherever a margin exists
+  const av = THREE.MathUtils.smoothstep(sp, avoidStart, avoidStart + .08);
+  if (av > 0){
+    const az   = -4.2;
+    const half = Math.tan(camera.fov * Math.PI / 360) * (camera.position.z - az) * camera.aspect;
+    const col  = Math.min(innerWidth - 48, 760) / innerWidth * half; // reading column half-width, world units
+    const wing = gap * .93 + .9;                                     // mark half-width incl. the slash lean
+    gx = gx * (1 - av) - (col + wing + .25) * av;
+    gz = gz * (1 - av) + az * av;
+  }
+  group.position.x = gx;
   group.position.y = -Math.sin(sp * Math.PI) * .4 - my * .25;
-  group.position.z = -1.2 + Math.sin(sp * Math.PI) * .9;
+  group.position.z = gz;
 
   // camera: slight dolly with scroll, parallax with mouse
   camera.position.x = mx * .6;
