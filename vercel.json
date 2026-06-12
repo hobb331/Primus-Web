@@ -4,59 +4,54 @@
   "buildCommand": null,
   "installCommand": null,
   "outputDirectory": ".",
-  "rewrites": [
+  "routes": [
     {
-      "source": "/",
+      "src": "^/$",
       "has": [{ "type": "header", "key": "accept", "value": ".*text/markdown.*" }],
-      "destination": "/index.md"
-    }
-  ],
-  "headers": [
-    {
-      "source": "/",
-      "headers": [
-        {
-          "key": "Link",
-          "value": "</.well-known/api-catalog>; rel=\"api-catalog\", </llms.txt>; rel=\"service-doc\"; type=\"text/markdown\", </index.md>; rel=\"alternate\"; type=\"text/markdown\""
-        }
-      ]
+      "dest": "/index.md",
+      "headers": {
+        "Content-Type": "text/markdown; charset=utf-8",
+        "x-markdown-tokens": "1046",
+        "Vary": "Accept"
+      }
     },
     {
-      "source": "/index.md",
-      "headers": [
-        { "key": "Content-Type", "value": "text/markdown; charset=utf-8" },
-        { "key": "x-markdown-tokens", "value": "1046" }
-      ]
+      "src": "^/$",
+      "headers": {
+        "Link": "</.well-known/api-catalog>; rel=\"api-catalog\", </llms.txt>; rel=\"service-doc\"; type=\"text/markdown\", </index.md>; rel=\"alternate\"; type=\"text/markdown\"",
+        "Vary": "Accept"
+      },
+      "continue": true
     },
     {
-      "source": "/llms.txt",
-      "headers": [
-        { "key": "Content-Type", "value": "text/markdown; charset=utf-8" }
-      ]
+      "src": "^/index\\.md$",
+      "headers": { "Content-Type": "text/markdown; charset=utf-8", "x-markdown-tokens": "1046" },
+      "continue": true
     },
     {
-      "source": "/auth.md",
-      "headers": [
-        { "key": "Content-Type", "value": "text/markdown; charset=utf-8" }
-      ]
+      "src": "^/llms\\.txt$",
+      "headers": { "Content-Type": "text/markdown; charset=utf-8" },
+      "continue": true
     },
     {
-      "source": "/.well-known/api-catalog",
-      "headers": [
-        { "key": "Content-Type", "value": "application/linkset+json" }
-      ]
+      "src": "^/auth\\.md$",
+      "headers": { "Content-Type": "text/markdown; charset=utf-8" },
+      "continue": true
     },
     {
-      "source": "/.well-known/agent-skills/index.json",
-      "headers": [
-        { "key": "Content-Type", "value": "application/json; charset=utf-8" }
-      ]
+      "src": "^/\\.well-known/api-catalog$",
+      "headers": { "Content-Type": "application/linkset+json" },
+      "continue": true
     },
     {
-      "source": "/.well-known/agent-skills/(.*)/SKILL.md",
-      "headers": [
-        { "key": "Content-Type", "value": "text/markdown; charset=utf-8" }
-      ]
+      "src": "^/\\.well-known/agent-skills/index\\.json$",
+      "headers": { "Content-Type": "application/json; charset=utf-8" },
+      "continue": true
+    },
+    {
+      "src": "^/\\.well-known/agent-skills/(.*)/SKILL\\.md$",
+      "headers": { "Content-Type": "text/markdown; charset=utf-8" },
+      "continue": true
     }
   ]
 }
