@@ -36,7 +36,7 @@
       "@type": "ProfessionalService",
       "@id": "#primus",
       "name": "Primus Digital",
-      "alternateName": ["Primus Digital Agency", "بريموس ديجيتال"],
+      "alternateName": ["Primus Digital Agency", "بريمس ديجيتال"],
       "slogan": "Where Excellence Begins",
       "description": "Premium digital marketing agency in Zagazig, Egypt. Social media management, media buying, event coverage, business solutions, videography, and web & mobile app development.",
       "telephone": "+201068072135",
@@ -258,7 +258,11 @@
     }
     .cursor-ring.hov{width:56px;height:56px;border-color:rgba(244,242,236,.85)}
   }
-  @media(pointer:coarse){.cursor-dot,.cursor-ring{display:none}}
+  @media(pointer:coarse){
+    .cursor-dot,.cursor-ring{display:none}
+    /* backdrop blur is a scroll-jank source on mobile GPUs — solid tint instead */
+    nav.scrolled{-webkit-backdrop-filter:none;backdrop-filter:none;background:rgba(12,14,15,.97)}
+  }
 
   /* ---------------- NAV ---------------- */
   nav{
@@ -1157,7 +1161,9 @@ try {
   canvas.style.display = 'none'; // no WebGL — the page stands on its own
   throw e;
 }
-renderer.setPixelRatio(Math.min(devicePixelRatio || 1, 2));
+const isTouch = matchMedia('(pointer:coarse)').matches;
+// phones: cap the render resolution — full DPR murders mobile GPUs on a fullscreen canvas
+renderer.setPixelRatio(Math.min(devicePixelRatio || 1, isTouch ? 1.5 : 2));
 renderer.setClearColor(0x0c0e0f, 1);
 
 const scene = new THREE.Scene();
@@ -1197,7 +1203,7 @@ for (let i = 0; i < 3; i++){
 group.rotation.z = -.38; // the slash lean, matching the logo
 
 // ---- deep particle field ----
-const P = 300;
+const P = isTouch ? 160 : 300;
 const pos = new Float32Array(P * 3);
 for (let i = 0; i < P * 3; i++) pos[i] = (Math.random() - .5) * 24;
 const pGeo = new THREE.BufferGeometry();
@@ -1253,7 +1259,8 @@ function frame(){
   // scroll journey: a calm, partial revolution, drifting gently across the frame
   group.rotation.y = sp * Math.PI * 1.6 + mx * .55 + (reduced ? 0 : t * .045);
   group.rotation.x = my * .35 + Math.sin(sp * Math.PI * 2) * .14;
-  group.position.x = Math.sin(sp * Math.PI * 1.5) * 1.9;
+  // lateral drift scaled to the viewport so the mark never leaves the frame on narrow screens
+  group.position.x = Math.sin(sp * Math.PI * 1.5) * Math.min(1.9, camera.aspect * 1.05);
   group.position.y = -Math.sin(sp * Math.PI) * .4 - my * .25;
   group.position.z = -1.2 + Math.sin(sp * Math.PI) * .9;
 

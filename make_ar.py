@@ -143,6 +143,10 @@ arstyle = '''
   .nav-cta{margin-left:0;margin-right:14px}
   footer .mid{font-size:12.5px}
   .loader-word{letter-spacing:.48em} /* Latin wordmark keeps its tracking */
+  /* the Latin brand lockup keeps /// before the wordmark, and the marquee
+     loop needs LTR flow to stay seamless — each span's Arabic still renders RTL */
+  .nav-mark,footer .mark{direction:ltr}
+  .marquee{direction:ltr}
 </style>'''
 assert '</style>' in src
 src = src.replace('</style>', arstyle, 1)  # arstyle ends with </style>
@@ -330,6 +334,9 @@ rep('>Instagram</a>', '>إنستجرام</a>')
 rep('<div class="mid">Where Excellence Begins</div>', '<div class="mid">حيث يبدأ التميّز</div>')
 rep('<div class="right">© <span id="yr"></span> Primus Digital — Zagazig, Egypt</div>',
     '<div class="right">© <span id="yr"></span> بريموس ديجيتال — الزقازيق، مصر</div>')
+
+# brand spelling: the agency writes it بريمس, not بريموس
+src = src.replace('بريموس', 'بريمس')
 
 # ---- write out ----
 if misses:
