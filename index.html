@@ -131,6 +131,7 @@
     overflow-x:hidden;
     -webkit-tap-highlight-color:transparent;
   }
+  html{scroll-behavior:smooth}
   ::selection{background:var(--porcelain);color:var(--charcoal)}
   .serif{font-family:'Playfair Display',serif}
   .caps{text-transform:uppercase;letter-spacing:.3em;font-size:11px;font-weight:500}
@@ -208,15 +209,18 @@
   @keyframes wordIn{to{opacity:1;filter:blur(0);transform:none}}
   body.loaded .fade-in,body.loaded .hero h1 .w{animation-play-state:running}
 
-  /* ---- staggered grid reveals ---- */
-  .stagger>*{opacity:0;transform:translateY(28px);transition:opacity .85s cubic-bezier(.16,1,.3,1),transform .85s cubic-bezier(.16,1,.3,1)}
-  .stagger.in>*{opacity:1;transform:none}
-  .stagger.in>*:nth-child(1){transition-delay:.05s}
-  .stagger.in>*:nth-child(2){transition-delay:.15s}
-  .stagger.in>*:nth-child(3){transition-delay:.25s}
-  .stagger.in>*:nth-child(4){transition-delay:.35s}
-  .stagger.in>*:nth-child(5){transition-delay:.45s}
-  .stagger.in>*:nth-child(6){transition-delay:.55s}
+  /* ---- staggered grid reveals ----
+     driven by an animation (not a transition) so the cards' own hover
+     transitions (background/transform) can't override the entrance */
+  .stagger>*{opacity:0}
+  .stagger.in>*{opacity:1;animation:riseIn .85s cubic-bezier(.16,1,.3,1) backwards}
+  .stagger.in>*:nth-child(1){animation-delay:.05s}
+  .stagger.in>*:nth-child(2){animation-delay:.15s}
+  .stagger.in>*:nth-child(3){animation-delay:.25s}
+  .stagger.in>*:nth-child(4){animation-delay:.35s}
+  .stagger.in>*:nth-child(5){animation-delay:.45s}
+  .stagger.in>*:nth-child(6){animation-delay:.55s}
+  @keyframes riseIn{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:none}}
 
   /* ---- section rule draw ---- */
   .sec-head .rule{transform:scaleX(0);transition:transform 1.2s cubic-bezier(.16,1,.3,1) .3s}
@@ -535,9 +539,10 @@
   .faq summary:hover{opacity:.85}
   .faq summary .x{
     flex-shrink:0;font-family:'Inter',sans-serif;font-weight:300;font-size:24px;
-    color:var(--silver-dim);line-height:1;transition:transform .35s;
+    color:var(--silver-dim);line-height:1;transition:transform .5s cubic-bezier(.16,1,.3,1);
   }
   .faq details[open] summary .x{transform:rotate(45deg)}
+  .faq details[open].closing summary .x{transform:none}
   .faq .a{color:var(--silver);font-size:14px;padding:0 4px 30px;max-width:660px}
   @media(max-width:560px){.faq summary{font-size:16.5px;padding:22px 2px}}
 
@@ -591,8 +596,8 @@
   @media(prefers-reduced-motion:reduce){
     html{scroll-behavior:auto}
     .marquee-track{animation:none}
-    .fade-in,.hero h1 .w{animation-duration:.01s;animation-delay:0s}
-    .reveal,.stagger>*,.sec-head .rule{transition-duration:.01s;transition-delay:0s}
+    .fade-in,.hero h1 .w,.stagger.in>*{animation-duration:.01s;animation-delay:0s}
+    .reveal,.sec-head .rule{transition-duration:.01s;transition-delay:0s}
     #loader{transition:none}
     .loader-mark,.loader-word,.loader-line{animation:none;opacity:1}
     .loader-line i{animation:none;transform:none}
@@ -1001,6 +1006,49 @@
       });
     }, {threshold:.4});
     els.forEach(el => cio.observe(el));
+  })();
+
+  // FAQ — tween <details> open/close instead of the native snap
+  (function(){
+    if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    const CURVE = 'cubic-bezier(.16,1,.3,1)';
+    document.querySelectorAll('.faq details').forEach(d => {
+      const s = d.querySelector('summary'), a = d.querySelector('.a');
+      if (!s || !a) return;
+      let busy = false;
+      s.addEventListener('click', e => {
+        e.preventDefault();
+        if (busy) return; busy = true;
+        const pb = getComputedStyle(a).paddingBottom;
+        const run = (from, to, after) => {
+          a.style.boxSizing = 'border-box'; a.style.overflow = 'hidden';
+          a.style.height = from.h; a.style.paddingBottom = from.pb; a.style.opacity = from.o;
+          requestAnimationFrame(() => requestAnimationFrame(() => {
+            a.style.transition = 'height .5s ' + CURVE + ', padding-bottom .5s ' + CURVE + ', opacity .4s ease';
+            a.style.height = to.h; a.style.paddingBottom = to.pb; a.style.opacity = to.o;
+          }));
+          let fin = false;
+          const finish = () => {
+            if (fin) return; fin = true;
+            after(); a.style.cssText = ''; busy = false;
+          };
+          a.addEventListener('transitionend', function te(ev){
+            if (ev.propertyName !== 'height') return;
+            a.removeEventListener('transitionend', te); finish();
+          });
+          setTimeout(finish, 650); // safety if transitionend never fires
+        };
+        if (d.open){
+          d.classList.add('closing'); // un-rotates the + immediately
+          run({h:a.offsetHeight + 'px', pb, o:'1'}, {h:'0px', pb:'0px', o:'0'},
+              () => { d.open = false; d.classList.remove('closing'); });
+        } else {
+          d.open = true;
+          const h = a.offsetHeight + 'px';
+          run({h:'0px', pb:'0px', o:'0'}, {h, pb, o:'1'}, () => {});
+        }
+      });
+    });
   })();
 
   // ---------- custom cursor (desktop only) ----------
