@@ -1072,6 +1072,64 @@
       el.addEventListener('mouseleave', () => ring.classList.remove('hov'));
     });
   })();
+
+  // ---------- WebMCP: expose site actions to in-browser AI agents ----------
+  (function(){
+    if (!navigator.modelContext || typeof navigator.modelContext.provideContext !== 'function') return;
+    const PACKAGES = [
+      {name:'Signature Starter Pack', price:'3,499 EGP/month', includes:['2 Reels','10 Posts','Facebook Moderation']},
+      {name:'Pro Growth Pack', price:'4,999 EGP/month', popular:true, includes:['4 Reels','15 Posts','FB + IG Moderation','Monthly Performance Report']},
+      {name:'Elite Prestige Pack', price:'7,999 EGP/month', includes:['6 Reels','20 Posts','All Platforms Moderation','Weekly Performance Reports','Priority Editing & Shooting']},
+      {name:'Custom Pack', price:'By request', includes:['Every service, tailored to your goals, platforms, and budget']}
+    ];
+    const CONTACT = {
+      whatsapp:'+20 106 807 2135',
+      whatsapp_link:'https://wa.me/201068072135?text=FIRST',
+      email:'primusdigitalcorpration@gmail.com',
+      facebook:'https://www.facebook.com/profile.php?id=61587403386997',
+      instagram:'https://www.instagram.com/primusdigital.global',
+      note:'Message "FIRST" on WhatsApp to receive a complimentary page audit — no pitch, no obligation.'
+    };
+    const text = o => ({content:[{type:'text', text: JSON.stringify(o)}]});
+    navigator.modelContext.provideContext({
+      tools: [
+        {
+          name: 'get_packages',
+          description: 'List Primus Digital\'s social media marketing packages with monthly EGP pricing and what each includes.',
+          inputSchema: {type:'object', properties:{}},
+          execute: async () => text(PACKAGES)
+        },
+        {
+          name: 'get_services',
+          description: 'List the services Primus Digital offers (core disciplines and exclusive services) and the areas served.',
+          inputSchema: {type:'object', properties:{}},
+          execute: async () => text({
+            core:['Social Media Management','Media Buying','Coverage','Business Solutions'],
+            exclusive:['Elite Videography','Website Design & Development','Mobile App Development'],
+            location:'Zagazig, Sharqia, Egypt',
+            serving:['Zagazig','10th of Ramadan','Belbeis','brands across Egypt']
+          })
+        },
+        {
+          name: 'get_contact_options',
+          description: 'Get Primus Digital\'s contact channels (WhatsApp, email, socials) and the free-audit inquiry flow.',
+          inputSchema: {type:'object', properties:{}},
+          execute: async () => text(CONTACT)
+        },
+        {
+          name: 'start_whatsapp_inquiry',
+          description: 'Open a prefilled WhatsApp chat with Primus Digital to start the free page-audit flow on the user\'s behalf.',
+          inputSchema: {type:'object', properties:{message:{type:'string', description:'Optional message to prefill; defaults to "FIRST" which triggers the complimentary audit.'}}},
+          execute: async (args) => {
+            const msg = (args && args.message) ? args.message : 'FIRST';
+            const url = 'https://wa.me/201068072135?text=' + encodeURIComponent(msg);
+            window.open(url, '_blank', 'noopener');
+            return text({opened:url});
+          }
+        }
+      ]
+    });
+  })();
 </script>
 
 <!-- ============ 3D scene: the /// mark, scroll-driven + mouse-reactive ============ -->

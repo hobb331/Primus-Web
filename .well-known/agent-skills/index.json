@@ -1,0 +1,14 @@
+{
+  "$schema": "https://agentskills.io/schemas/v0.2.0/index.json",
+  "version": "0.2.0",
+  "site": "https://primusdigitalagency.vercel.app/",
+  "skills": [
+    {
+      "name": "primus-digital-inquiry",
+      "type": "skill",
+      "description": "How to get pricing, compare packages, and start an engagement with Primus Digital, a digital marketing agency in Zagazig, Sharqia, Egypt. Covers the WhatsApp free-audit flow and machine-readable content sources.",
+      "url": "https://primusdigitalagency.vercel.app/.well-known/agent-skills/primus-digital-inquiry/SKILL.md",
+      "sha256": "122016ce2489073dacaefb775159e3291b68c67769d9cade5239fdf212b713fa"
+    }
+  ]
+}

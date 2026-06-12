@@ -12,9 +12,13 @@ Official one-page website for **Primus Digital**, a premium digital marketing ag
 
 ```
 index.html    the entire site
-robots.txt    crawler rules + sitemap pointer
+index.md      markdown mirror for AI agents (served on Accept: text/markdown)
+llms.txt      agent-facing overview (llms.txt convention)
+auth.md       tells agents no auth/registration is needed
+robots.txt    crawler rules + Content-Signal + sitemap pointer
 sitemap.xml   single-URL sitemap
-vercel.json   static-serve config (no build step)
+vercel.json   static-serve config, Link headers, markdown negotiation
+.well-known/  api-catalog (RFC 9727) + agent-skills index
 .nojekyll     tells GitHub Pages to serve files as-is
 ```
 

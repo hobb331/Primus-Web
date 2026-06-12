@@ -1,0 +1,24 @@
+{
+  "linkset": [
+    {
+      "anchor": "https://primusdigitalagency.vercel.app/",
+      "service-doc": [
+        {
+          "href": "https://primusdigitalagency.vercel.app/llms.txt",
+          "type": "text/markdown",
+          "title": "Primus Digital — agent-facing overview"
+        }
+      ],
+      "describedby": [
+        {
+          "href": "https://primusdigitalagency.vercel.app/index.md",
+          "type": "text/markdown",
+          "title": "Primus Digital — full site content as markdown"
+        }
+      ],
+      "status": [
+        { "href": "https://primusdigitalagency.vercel.app/" }
+      ]
+    }
+  ]
+}

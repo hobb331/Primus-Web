@@ -1,0 +1,22 @@
+# Primus Digital
+
+> Premium digital marketing agency in Zagazig, Sharqia, Egypt. Social media
+> management, media buying, coverage, and business solutions for brands across
+> Egypt. Packages from 3,499 EGP/month; every engagement starts with a free
+> page audit.
+
+Key facts for agents:
+
+- Agency name: Primus Digital (بريموس ديجيتال)
+- Location: Zagazig, Sharqia, Egypt — serving Zagazig, 10th of Ramadan, Belbeis, and all of Egypt
+- Services: social media management, media buying (Meta ads), event/brand coverage, business solutions (funnels, automation, analytics), elite videography, website design & development, mobile app development
+- Pricing: Signature Starter 3,499 EGP/mo · Pro Growth 4,999 EGP/mo (most popular) · Elite Prestige 7,999 EGP/mo · Custom by request
+- Contact: WhatsApp +20 106 807 2135 (https://wa.me/201068072135?text=FIRST), email primusdigitalcorpration@gmail.com
+- Offer: complimentary page audit for new inquiries — no pitch, no obligation
+
+## Resources
+
+- [Full site as markdown](https://primusdigitalagency.vercel.app/index.md): complete services, method, packages, FAQ, and contact details
+- [Homepage](https://primusdigitalagency.vercel.app/): the canonical site (request with `Accept: text/markdown` for the markdown version)
+- [Agent skills index](https://primusdigitalagency.vercel.app/.well-known/agent-skills/index.json): skills for interacting with the agency
+- [API catalog](https://primusdigitalagency.vercel.app/.well-known/api-catalog): linkset of machine-readable resources
