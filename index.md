@@ -21,6 +21,28 @@ and how much of the system already exists all move it. We measure what you
 already have, then send a written quote with the work itemised. The first read
 of your presence costs nothing.
 
+## The first read
+
+Every engagement opens the same way, and it opens at no cost. We go through
+what you already have the way an auditor would, then tell you what we found,
+whether or not you hire us afterwards.
+
+- **What we open**: your site on a throttled phone rather than a fast desktop,
+  your feed next to the competitors you are actually losing to, your ad spend
+  against what it returned, and your funnel from the first click to the first
+  reply, including how long that reply takes to arrive.
+- **What we look for**: leaks, not opinions. Pages that cost money to reach and
+  give nothing back, spend pointed at the wrong audience, a checkout that loses
+  people at one specific step, and the claims in your markup that can quietly
+  cost you a platform.
+- **What you get back**: the findings in writing, ordered by what they cost you
+  rather than by how easy they are to fix, with the measurement beside each one.
+- **What happens next**: you fix them in-house, or you give us the scope and we
+  quote it in writing, itemised. Both are a good outcome.
+
+The paid Measured Audit is the long version of the same discipline: ten or
+eleven pages, every finding evidenced, fixes quoted separately.
+
 ## The four disciplines
 
 Run in-house, sold as one closed loop. Take one, or take the loop.
@@ -88,6 +110,22 @@ Name, domain and screenshots withheld.
   reviews
 
 Name, domain and screenshots withheld.
+
+### This website · public artifact
+
+The site you are reading is published as proof in its own right, and every
+claim about it can be verified from outside.
+
+- One static document. No build step, no framework, no third-party script
+- The Arabic build is generated from the English source, so the two cannot
+  drift apart; the generator refuses to publish if a price or a mistranslated
+  brand name reappears
+- Skip link, visible focus states, WCAG AA contrast, reduced motion honoured
+- HSTS, framing denied, MIME sniffing off, permissions closed by default
+- Machine-readable: structured data, llms.txt, this markdown mirror, and a live
+  MCP endpoint
+- Performance measured on a throttled mid-range phone, not on the machine that
+  built it
 
 ## Location
 

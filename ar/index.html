@@ -632,7 +632,7 @@
   [data-par]{transform:translate3d(0,var(--py,0px),0);will-change:transform}
 
   /* magnetic buttons (JS writes the transform inline on pointer:fine) */
-  .magnetic{will-change:transform}
+  @media(pointer:fine){ .magnetic{will-change:transform} }
 
   /* ---------------- DISCIPLINE SUB-LISTS ---------------- */
   .svc-list{list-style:none;margin-top:24px}
@@ -700,6 +700,43 @@
     .case-rail{position:static}
     .case-spec li{grid-template-columns:1fr;gap:4px;padding:12px 0}
     .case-spec b{padding-top:0}
+  }
+
+  /* ---------------- FIRST READ ---------------- */
+  .read-wrap{
+    display:grid;grid-template-columns:minmax(0,1fr) minmax(0,320px);
+    gap:clamp(38px,5vw,80px);align-items:start;
+  }
+  .read-aside{position:sticky;top:118px}
+  .read-cost{border:1px solid var(--line);background:var(--card);padding:34px 30px 32px}
+  .read-cost .big{
+    font-size:clamp(38px,4.4vw,54px);line-height:1;letter-spacing:-.02em;margin-top:14px;
+  }
+  .read-cost p{color:var(--silver);font-size:13px;margin-top:18px}
+  .read-cost .btn{margin-top:26px;width:100%;text-align:center}
+  .read-list{list-style:none;border-top:1px solid var(--line)}
+  .read-list li{
+    display:grid;grid-template-columns:72px minmax(0,1fr);gap:26px;
+    padding:34px 0;border-bottom:1px solid var(--line);
+    transition:background .4s ease;
+  }
+  .read-list li:hover{background:var(--card)}
+  .read-list .rn{
+    font-family:'Playfair Display',serif;font-style:italic;
+    font-size:22px;letter-spacing:.06em;color:var(--silver-dim);
+    line-height:1.2;transition:color .6s ease;
+  }
+  .read-list li:hover .rn{color:var(--porcelain)}
+  .read-list h3{
+    font-size:11px;letter-spacing:.26em;text-transform:uppercase;font-weight:500;margin-bottom:12px;
+  }
+  .read-list p{color:var(--silver);font-size:14px;max-width:640px}
+  @media(max-width:900px){
+    .read-wrap{grid-template-columns:1fr;gap:34px}
+    .read-aside{position:static}
+    .read-list{border-top:none}
+    .read-list li{grid-template-columns:52px minmax(0,1fr);gap:16px;padding:26px 0}
+    .read-list li:first-child{border-top:1px solid var(--line)}
   }
 
   /* ---------------- ENGAGEMENT CARDS (quote based) ---------------- */
@@ -965,7 +1002,7 @@
     <div class="sec-head reveal">
       <div class="sec-num">/// 03 · الدليل</div>
       <h2 class="mask">الشغل، واللي <em>اكتشفه.</em></h2>
-      <p class="lede">منصة واحدة صمّمناها وبنيناها وطلّعناها، وتدقيقين مدفوعين لبيزنسات كانت فاكرة نفسها تمام. عملاء التدقيق مقفولين: من غير اسم، من غير دومين، من غير صورة. الأرقام أرقامهم، والاكتشافات كانت بتاعتنا.</p>
+      <p class="lede">منصة واحدة صمّمناها وبنيناها وطلّعناها، وتدقيقين مدفوعين لبيزنسات كانت فاكرة نفسها تمام، والصفحة اللي إنت بتقراها دلوقتي. عملاء التدقيق مقفولين: من غير اسم، من غير دومين، من غير صورة. الأرقام أرقامهم، والاكتشافات كانت بتاعتنا.</p>
     </div>
 
     <div class="work-stack">
@@ -1024,6 +1061,78 @@
         </div>
       </article>
 
+      <article class="case reveal">
+        <div class="case-rail"><span class="case-n">/// 04</span></div>
+        <div class="case-main">
+          <div class="case-tag">أثر · الصفحة دي</div>
+          <h3>الرابع هو الصفحة <em>اللي إنت فيها.</em></h3>
+          <p class="case-line">أي وكالة بتطلب منك تصدّق شغلها. دي مفتوحة قدّامك أصلًا، وكل جملة تحتها تقدر تتأكد منها قبل ما تبعت رسالة واحدة.</p>
+          <p>بتتسلّم كمستند static واحد: من غير build step، من غير framework، ومن غير أي script تاني بيتفرّج عليك وإنت بتقرا. النسخة العربية دي بتتولّد من المصدر الإنجليزي مش بتتكتب جنبه، فمستحيل الاتنين يبعدوا عن بعض، والمولّد بيرفض ينشر أصلًا لو سعر أو اسم براند مترجم غلط رجع تاني. والمكن كمان بياخد حقه: نسخة markdown من الصفحة كلها، و endpoint شغّال أي مساعد ذكي يسأله بدل ما يخمّن إحنا بناخد كام.</p>
+          <ul class="case-spec">
+            <li><b>التسليم</b><span>مستند static واحد، من غير build step، من غير framework</span></li>
+            <li><b>لغتين</b><span>العربي بيتولّد من المصدر الإنجليزي، وRTL متعكوس في كل حتة</span></li>
+            <li><b>الوصول</b><span>لينك تخطّي، تركيز ظاهر، تباين AA، واحترام تقليل الحركة</span></li>
+            <li><b>الهيدرز</b><span>HSTS، التأطير مرفوض، الاستنتاج مقفول، الصلاحيات مقفولة افتراضيًا</span></li>
+            <li><b>مقروء للمكن</b><span>بيانات منظّمة، llms.txt، نسخة markdown، وendpoint MCP شغّال</span></li>
+            <li><b>الوزن</b><span>متقاس على موبايل متوسط مخنوق، مش على الجهاز اللي بناه</span></li>
+          </ul>
+          <p class="case-note">اتأكد قبل ما تصدّق: اقرا سورس الصفحة، بصّ على هيدرز الرد، لُف عليها بالكيبورد من غير ماوس، وبعدين افتحها بالإنجليزي.</p>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- ================ FIRST READ ================ -->
+<section id="read">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="sec-num">/// 04 · القراءة الأولى</div>
+      <h2 class="mask">قبل السعر، <em>القراءة.</em></h2>
+      <p class="lede">مفيش تعاقد هنا بيبدأ برقم. بيبدأ بإننا نبص على اللي عندك أصلًا زي ما المدقّق بيبص، وبعدين نقول لك لقينا إيه. القراءة الأولى دي ببلاش، والاكتشافات بتاعتك سواء اشتغلت معانا أو لأ.</p>
+    </div>
+
+    <div class="read-wrap">
+      <ol class="read-list stagger">
+        <li>
+          <span class="rn">01</span>
+          <div>
+            <h3>بنفتح إيه</h3>
+            <p>موقعك على موبايل مخنوق مش على ديسك توب سريع. صفحتك جنب المنافسين اللي بتخسر قدامهم فعلًا. مصروف إعلاناتك مقاس على اللي رجّعه. والمسار من أول كليك لأول رد، وكمان الرد ده بياخد قد إيه لحد ما يوصل.</p>
+          </div>
+        </li>
+        <li>
+          <span class="rn">02</span>
+          <div>
+            <h3>بندوّر على إيه</h3>
+            <p>تسريبات، مش آراء. صفحات بتتكلّف فلوس عشان حد يوصلها وما بترجّعش حاجة. صرف متوجّه لجمهور غلط. checkout بيوقّع الناس عند خطوة واحدة بعينها. والجُمل القاعدة في الـ markup بتاعك اللي ممكن تكلّفك منصة كاملة في سكات.</p>
+          </div>
+        </li>
+        <li>
+          <span class="rn">03</span>
+          <div>
+            <h3>بيرجع لك إيه</h3>
+            <p>الاكتشافات مكتوبة، مرتّبة بالتكلفة اللي بتدفعها مش بسهولة الحل. لغة واضحة، والقياس مطبوع جنب كل واحدة، فتقدر تتأكد بنفسك أو تدّيها لحد تاني يتأكد.</p>
+          </div>
+        </li>
+        <li>
+          <span class="rn">04</span>
+          <div>
+            <h3>وبعدين بيحصل إيه</h3>
+            <p>تاخد الاكتشافات وتصلّحها بنفسك، أو تدّينا النطاق ونسعّره مكتوب ومفصّل بنود. الاتنين نتيجة كويسة. الحاجة الوحيدة اللي مش هنعملها إننا نحط رقم قدامك قبل ما حد يبص.</p>
+          </div>
+        </li>
+      </ol>
+
+      <aside class="read-aside reveal">
+        <div class="read-cost">
+          <div class="sec-num">القراءة بتتكلّف كام</div>
+          <div class="big serif">ولا حاجة.</div>
+          <p>ببلاش لأننا نفضّل نبص قبل ما أي طرف يلتزم برقم. والتدقيق المقاس المدفوع هو النسخة الطويلة من نفس الانضباط: عشر أو حداشر صفحة، كل اكتشاف بدليل، والحلول بتتسعّر لوحدها.</p>
+          <a href="#contact" class="btn ghost-btn magnetic">اطلب قراءتك</a>
+        </div>
+      </aside>
     </div>
   </div>
 </section>
@@ -1032,7 +1141,7 @@
 <section id="engagements">
   <div class="wrap">
     <div class="sec-head center reveal">
-      <div class="sec-num">/// 04 · التعاقدات</div>
+      <div class="sec-num">/// 05 · التعاقدات</div>
       <h2 class="mask">مفيش باقات.<br><em>عرض سعر.</em></h2>
       <div class="rule"></div>
       <p class="lede center-lede">قايمة الأسعار تخمين اتعمل قبل ما حد يبص. النطاق هو اللي بيحرّك الرقم، والنطاق مختلف كل مرة: المنصات، حجم المحتوى، الـ integrations، أيام التصوير، وقد إيه من النظام موجود أصلًا. فبنقيس الأول، وبعدين نسعّر مكتوب ومفصّل بنود.</p>
@@ -1108,7 +1217,7 @@
   <div class="wrap">
     <div class="loc reveal">
       <div class="body">
-        <div class="sec-num" style="margin-bottom:14px">/// 05 · مكاننا</div>
+        <div class="sec-num" style="margin-bottom:14px">/// 06 · مكاننا</div>
         <h2 class="mask">مقرّنا الزقازيق.<br>مبنيين <em>للطموح.</em></h2>
         <p style="margin-top:22px">بيزنسات الشرقية اتقال لها نفس الكلام لسنين: ارضى بالقوالب، ارضى بـ"كفاية كده"، ارضى بوكالات صفحاتها هي نفسها شكلها مهجور ومطوّرينها فريلانسر بتاع حد تاني.</p>
         <p><strong>ما فتحناش في الزقازيق رغم السوق. فتحنا بسببه.</strong> البراندات هنا تستاهل شغل يقف جنب أي حاجة طالعة من القاهرة: سوفتوير يصمد قدام التدقيق، استراتيجية وراها رياضة، وتصميم قدامه ذوق.</p>
@@ -1129,7 +1238,7 @@
 <section id="faq">
   <div class="wrap">
     <div class="sec-head center reveal">
-      <div class="sec-num">/// 06 · أسئلة، وإجابات</div>
+      <div class="sec-num">/// 07 · أسئلة، وإجابات</div>
       <h2 class="mask">اتسأل و<em>اتجاوب.</em></h2>
       <div class="rule"></div>
     </div>
@@ -1485,14 +1594,18 @@ import * as THREE from 'three';
 const canvas = document.getElementById('gl');
 let renderer;
 try {
-  renderer = new THREE.WebGLRenderer({canvas, antialias:true});
+  renderer = new THREE.WebGLRenderer({
+    canvas,
+    antialias: !matchMedia('(pointer:coarse)').matches,
+    powerPreference: 'low-power'
+  });
 } catch (e) {
   canvas.style.display = 'none'; // no WebGL — the page stands on its own
   throw e;
 }
 const isTouch = matchMedia('(pointer:coarse)').matches;
 // phones: cap the render resolution — full DPR murders mobile GPUs on a fullscreen canvas
-renderer.setPixelRatio(Math.min(devicePixelRatio || 1, isTouch ? 1.5 : 2));
+renderer.setPixelRatio(Math.min(devicePixelRatio || 1, isTouch ? 1.25 : 2));
 renderer.setClearColor(0x0c0e0f, 1);
 
 const scene = new THREE.Scene();
@@ -1522,7 +1635,9 @@ const rim = new THREE.DirectionalLight(0xF4F2EC, .65); rim.position.set(-6, -3, 
 
 // ---- the /// mark as three brushed-metal bars ----
 const group = new THREE.Group(); scene.add(group);
-const mat = new THREE.MeshStandardMaterial({color:0xc9c7c0, metalness:.92, roughness:.3});
+const mat = isTouch
+  ? new THREE.MeshPhongMaterial({color:0x46494c, specular:0xF4F2EC, shininess:30})
+  : new THREE.MeshStandardMaterial({color:0xc9c7c0, metalness:.92, roughness:.3});
 const barGeo = new THREE.BoxGeometry(.42, 3.6, .42);
 const bars = [];
 for (let i = 0; i < 3; i++){
@@ -1532,7 +1647,7 @@ for (let i = 0; i < 3; i++){
 group.rotation.z = -.38; // the slash lean, matching the logo
 
 // ---- deep particle field ----
-const P = isTouch ? 160 : 300;
+const P = isTouch ? 80 : 300;
 const pos = new Float32Array(P * 3);
 for (let i = 0; i < P * 3; i++) pos[i] = (Math.random() - .5) * 24;
 const pGeo = new THREE.BufferGeometry();
@@ -1567,10 +1682,20 @@ addEventListener('scroll', () => { tsp = progress(); }, {passive:true});
 tsp = progress();
 
 const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+// phones get no free-running idle drift: it keeps the GPU busy for motion no
+// one asked for, and without it a settled scene needs no redraw at all
+const idles = !reduced && !isTouch;
+const FRAME_MS = isTouch ? 1000 / 30 : 0;   // 60fps of this scene is not worth the heat
+let lastDraw = 0, lastKey = '';
 const clock = new THREE.Clock();
 const heroInner = document.querySelector('.hero-inner');
 
-function frame(){
+function frame(now){
+  requestAnimationFrame(frame);
+  if (document.hidden) return;                 // background tab: draw nothing
+  if (now - lastDraw < FRAME_MS) return;
+  lastDraw = now;
+
   const t = clock.getElapsedTime();
   mx += (tmx - mx) * .045;  my += (tmy - my) * .045;
   sp += (tsp - sp) * .055;
@@ -1581,12 +1706,12 @@ function frame(){
   const turn = Math.sin(sp * Math.PI) * (Math.PI / 3);
   bars.forEach((b, i) => {
     b.position.x = (i - 1) * gap;
-    b.position.y = reduced ? 0 : Math.sin(t * .7 + i * 1.3) * .08;
+    b.position.y = idles ? Math.sin(t * .7 + i * 1.3) * .08 : 0;
     b.rotation.y = turn * (1 + (i - 1) * .15);
   });
 
   // scroll journey: a calm, partial revolution, drifting gently across the frame
-  group.rotation.y = sp * Math.PI * 1.6 + mx * .55 + (reduced ? 0 : t * .045);
+  group.rotation.y = sp * Math.PI * 1.6 + mx * .55 + (idles ? t * .045 : 0);
   group.rotation.x = my * .35 + Math.sin(sp * Math.PI * 2) * .14;
   // lateral drift scaled to the viewport so the mark never leaves the frame on narrow screens
   group.position.x = Math.sin(sp * Math.PI * 1.5) * Math.min(1.9, camera.aspect * 1.05);
@@ -1610,13 +1735,20 @@ function frame(){
   }
 
   // particle field counter-rotates slowly
-  stars.rotation.y = (reduced ? 0 : t * .012) + sp * 1.1;
+  stars.rotation.y = (idles ? t * .012 : 0) + sp * 1.1;
   stars.rotation.x = sp * .35;
 
+  // with idle drift off, a phone that has stopped scrolling produces the exact
+  // same frame forever. Rounding gives the damping a deadband to settle into.
+  if (isTouch){
+    const key = sp.toFixed(4) + '|' + mx.toFixed(3) + '|' + my.toFixed(3);
+    if (key === lastKey) return;
+    lastKey = key;
+  }
+
   renderer.render(scene, camera);
-  requestAnimationFrame(frame);
 }
-frame();
+requestAnimationFrame(frame);
 </script>
 
 </body>

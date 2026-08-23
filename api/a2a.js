@@ -10,7 +10,7 @@ const OVERVIEW =
   'FILM (event and launch coverage, cinematic brand film), and ' +
   'GROW (social media management, content production, media buying, performance reporting). ' +
   'There is no price list and no fixed package: scope drives the number, so every engagement is measured first and quoted individually in writing. ' +
-  'Proof: Zoom Bazar, a bazaar operations SaaS platform designed, built and deployed end to end, plus two paid Measured Audits published anonymised. ' +
+  'Proof: Zoom Bazar, a bazaar operations SaaS platform designed, built and deployed end to end, two paid Measured Audits published anonymised, and this website itself as a verifiable public artifact. ' +
   'The first read of your presence is free. ' +
   'Contact: WhatsApp +20 106 807 2135 (https://wa.me/201068072135?text=FIRST) or primusdigitalcorpration@gmail.com. ' +
   'Full details: https://primusdigitalagency.vercel.app/index.md';

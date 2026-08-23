@@ -288,8 +288,8 @@ rep('<p>Reporting, iteration, compounding results. Excellence maintained, not ex
 /* ==================== 03 · WORK ==================== */
 rep('<div class="sec-num">/// 03 · Proof</div>', '<div class="sec-num">/// 03 · الدليل</div>');
 rep('<h2 class="mask">The work, and what it <em>found.</em></h2>', '<h2 class="mask">الشغل، واللي <em>اكتشفه.</em></h2>');
-rep('<p class="lede">One platform we designed, built and shipped, and two paid audits of businesses that thought they were fine. The audit clients stay sealed: no name, no domain, no screenshot. The numbers are theirs, the findings were ours.</p>',
-    '<p class="lede">منصة واحدة صمّمناها وبنيناها وطلّعناها، وتدقيقين مدفوعين لبيزنسات كانت فاكرة نفسها تمام. عملاء التدقيق مقفولين: من غير اسم، من غير دومين، من غير صورة. الأرقام أرقامهم، والاكتشافات كانت بتاعتنا.</p>');
+rep('<p class="lede">One platform we designed, built and shipped, two paid audits of businesses that thought they were fine, and the page you are reading. The audit clients stay sealed: no name, no domain, no screenshot. The numbers are theirs, the findings were ours.</p>',
+    '<p class="lede">منصة واحدة صمّمناها وبنيناها وطلّعناها، وتدقيقين مدفوعين لبيزنسات كانت فاكرة نفسها تمام، والصفحة اللي إنت بتقراها دلوقتي. عملاء التدقيق مقفولين: من غير اسم، من غير دومين، من غير صورة. الأرقام أرقامهم، والاكتشافات كانت بتاعتنا.</p>');
 
 rep('<div class="case-tag">Product · SaaS Platform</div>', '<div class="case-tag">منتج · منصة SaaS</div>');
 rep('<p class="case-line">A bazaar runs on paper and group chats until the day it cannot. We designed, built and deployed the operations platform that replaced both.</p>',
@@ -347,8 +347,55 @@ rep('<li><b>Deliverable</b><span>11 pages, 22 findings, no fixes</span></li>',
 rep('<p class="case-note">Name, domain and screenshots withheld. Published anonymised, by agreement.</p>',
     '<p class="case-note">الاسم والدومين والصور محجوبة. منشور مجهّل الهوية، بالاتفاق.</p>');
 
-/* ==================== 04 · ENGAGEMENTS ==================== */
-rep('<div class="sec-num">/// 04 · Engagements</div>', '<div class="sec-num">/// 04 · التعاقدات</div>');
+/* ---- case 04: the page itself ---- */
+rep('<div class="case-tag">Artifact · This Page</div>', '<div class="case-tag">أثر · الصفحة دي</div>');
+rep('<h3>The fourth one is the page <em>you are on.</em></h3>', '<h3>الرابع هو الصفحة <em>اللي إنت فيها.</em></h3>');
+rep('<p class="case-line">Every agency asks you to take its work on trust. This one is already open in front of you, and every claim under it can be checked before you send a single message.</p>',
+    '<p class="case-line">أي وكالة بتطلب منك تصدّق شغلها. دي مفتوحة قدّامك أصلًا، وكل جملة تحتها تقدر تتأكد منها قبل ما تبعت رسالة واحدة.</p>');
+rep('<p>It ships as one static document: no build step, no framework, and no third-party script watching you read it. The Arabic build is generated from this English source rather than written beside it, so the two cannot drift apart, and the generator refuses to publish at all if a price or a mistranslated brand name finds its way back in. Machines are served properly too, with a markdown mirror of the page and a live endpoint an assistant can query instead of guessing at what we charge.</p>',
+    '<p>بتتسلّم كمستند static واحد: من غير build step، من غير framework، ومن غير أي script تاني بيتفرّج عليك وإنت بتقرا. النسخة العربية دي بتتولّد من المصدر الإنجليزي مش بتتكتب جنبه، فمستحيل الاتنين يبعدوا عن بعض، والمولّد بيرفض ينشر أصلًا لو سعر أو اسم براند مترجم غلط رجع تاني. والمكن كمان بياخد حقه: نسخة markdown من الصفحة كلها، و endpoint شغّال أي مساعد ذكي يسأله بدل ما يخمّن إحنا بناخد كام.</p>');
+rep('<li><b>Delivery</b><span>One static document, no build step, no framework</span></li>',
+    '<li><b>التسليم</b><span>مستند static واحد، من غير build step، من غير framework</span></li>');
+rep('<li><b>Bilingual</b><span>Arabic generated from the English source, RTL mirrored throughout</span></li>',
+    '<li><b>لغتين</b><span>العربي بيتولّد من المصدر الإنجليزي، وRTL متعكوس في كل حتة</span></li>');
+rep('<li><b>Access</b><span>Skip link, visible focus, AA contrast, reduced motion honoured</span></li>',
+    '<li><b>الوصول</b><span>لينك تخطّي، تركيز ظاهر، تباين AA، واحترام تقليل الحركة</span></li>');
+rep('<li><b>Headers</b><span>HSTS, framing denied, sniffing off, permissions closed by default</span></li>',
+    '<li><b>الهيدرز</b><span>HSTS، التأطير مرفوض، الاستنتاج مقفول، الصلاحيات مقفولة افتراضيًا</span></li>');
+rep('<li><b>Machine-readable</b><span>Structured data, llms.txt, markdown mirror, live MCP endpoint</span></li>',
+    '<li><b>مقروء للمكن</b><span>بيانات منظّمة، llms.txt، نسخة markdown، وendpoint MCP شغّال</span></li>');
+rep('<li><b>Weight</b><span>Measured on a throttled mid-range phone, not on the machine that built it</span></li>',
+    '<li><b>الوزن</b><span>متقاس على موبايل متوسط مخنوق، مش على الجهاز اللي بناه</span></li>');
+rep('<p class="case-note">Check it before you trust it: read the page source, look at the response headers, tab through it without a mouse, then open it in Arabic.</p>',
+    '<p class="case-note">اتأكد قبل ما تصدّق: اقرا سورس الصفحة، بصّ على هيدرز الرد، لُف عليها بالكيبورد من غير ماوس، وبعدين افتحها بالإنجليزي.</p>');
+
+/* ==================== 04 · THE FIRST READ ==================== */
+rep('<div class="sec-num">/// 04 · The First Read</div>', '<div class="sec-num">/// 04 · القراءة الأولى</div>');
+rep('<h2 class="mask">Before the quote, the <em>read.</em></h2>', '<h2 class="mask">قبل السعر، <em>القراءة.</em></h2>');
+rep('<p class="lede">No engagement here opens with a number. It opens with us going through what you already have the way an auditor would, then telling you what we found. That first read costs nothing, and the findings are yours whether you hire us or not.</p>',
+    '<p class="lede">مفيش تعاقد هنا بيبدأ برقم. بيبدأ بإننا نبص على اللي عندك أصلًا زي ما المدقّق بيبص، وبعدين نقول لك لقينا إيه. القراءة الأولى دي ببلاش، والاكتشافات بتاعتك سواء اشتغلت معانا أو لأ.</p>');
+
+rep('<h3>What we open</h3>', '<h3>بنفتح إيه</h3>');
+rep('<p>Your site on a throttled phone rather than on a fast desktop. Your feed next to the competitors you are actually losing to. Your ad spend measured against what it returned. Your funnel from the first click to the first reply, including how long that reply takes to arrive.</p>',
+    '<p>موقعك على موبايل مخنوق مش على ديسك توب سريع. صفحتك جنب المنافسين اللي بتخسر قدامهم فعلًا. مصروف إعلاناتك مقاس على اللي رجّعه. والمسار من أول كليك لأول رد، وكمان الرد ده بياخد قد إيه لحد ما يوصل.</p>');
+rep('<h3>What we look for</h3>', '<h3>بندوّر على إيه</h3>');
+rep('<p>Leaks, not opinions. Pages that cost money to reach and give nothing back. Spend pointed at the wrong audience. A checkout that loses people at one specific step. And the claims sitting in your markup that can quietly cost you a platform.</p>',
+    '<p>تسريبات، مش آراء. صفحات بتتكلّف فلوس عشان حد يوصلها وما بترجّعش حاجة. صرف متوجّه لجمهور غلط. checkout بيوقّع الناس عند خطوة واحدة بعينها. والجُمل القاعدة في الـ markup بتاعك اللي ممكن تكلّفك منصة كاملة في سكات.</p>');
+rep('<h3>What you get back</h3>', '<h3>بيرجع لك إيه</h3>');
+rep('<p>The findings in writing, ordered by what they cost you rather than by how easy they are to fix. Plain language, with the measurement printed beside each one, so you can verify it yourself or hand it to somebody else to verify.</p>',
+    '<p>الاكتشافات مكتوبة، مرتّبة بالتكلفة اللي بتدفعها مش بسهولة الحل. لغة واضحة، والقياس مطبوع جنب كل واحدة، فتقدر تتأكد بنفسك أو تدّيها لحد تاني يتأكد.</p>');
+rep('<h3>What happens next</h3>', '<h3>وبعدين بيحصل إيه</h3>');
+rep('<p>You take the findings and fix them in-house, or you give us the scope and we quote it in writing, itemised. Both are a good outcome. The one thing we will not do is put a figure in front of you before anybody has looked.</p>',
+    '<p>تاخد الاكتشافات وتصلّحها بنفسك، أو تدّينا النطاق ونسعّره مكتوب ومفصّل بنود. الاتنين نتيجة كويسة. الحاجة الوحيدة اللي مش هنعملها إننا نحط رقم قدامك قبل ما حد يبص.</p>');
+rep('<div class="sec-num">What the read costs</div>', '<div class="sec-num">القراءة بتتكلّف كام</div>');
+rep('<div class="big serif">Nothing.</div>', '<div class="big serif">ولا حاجة.</div>');
+rep('<p>It is free because we would rather look before either side commits to a number. The paid Measured Audit is the long version of the same discipline: ten or eleven pages, every finding evidenced, fixes quoted separately.</p>',
+    '<p>ببلاش لأننا نفضّل نبص قبل ما أي طرف يلتزم برقم. والتدقيق المقاس المدفوع هو النسخة الطويلة من نفس الانضباط: عشر أو حداشر صفحة، كل اكتشاف بدليل، والحلول بتتسعّر لوحدها.</p>');
+rep('<a href="#contact" class="btn ghost-btn magnetic">Request Your Read</a>',
+    '<a href="#contact" class="btn ghost-btn magnetic">اطلب قراءتك</a>');
+
+/* ==================== 05 · ENGAGEMENTS ==================== */
+rep('<div class="sec-num">/// 05 · Engagements</div>', '<div class="sec-num">/// 05 · التعاقدات</div>');
 rep('<h2 class="mask">No packages.<br>A <em>quote.</em></h2>', '<h2 class="mask">مفيش باقات.<br><em>عرض سعر.</em></h2>');
 rep('<p class="lede center-lede">A price list is a guess made before anyone looked. Scope moves the number, and scope is different every time: platforms, output volume, integrations, shoot days, how much of the system already exists. So we measure first, then quote in writing, itemised.</p>',
     '<p class="lede center-lede">قايمة الأسعار تخمين اتعمل قبل ما حد يبص. النطاق هو اللي بيحرّك الرقم، والنطاق مختلف كل مرة: المنصات، حجم المحتوى، الـ integrations، أيام التصوير، وقد إيه من النظام موجود أصلًا. فبنقيس الأول، وبعدين نسعّر مكتوب ومفصّل بنود.</p>');
@@ -385,9 +432,9 @@ rep('>Scope A Shoot</a>', '>حدّد نطاق التصوير</a>');
 rep('<p class="pack-note">Take one discipline or take the loop. Every engagement opens the same way: we read what you already have, and your first read costs nothing.</p>',
     '<p class="pack-note">خد تخصص واحد أو خد الحلقة كلها. كل تعاقد بيفتح بنفس الطريقة: بنقرا اللي موجود عندك، والقراءة الأولى من غير مقابل.</p>');
 
-/* ==================== 05 · LOCATION ==================== */
-rep('<div class="sec-num" style="margin-bottom:14px">/// 05 · Where We Stand</div>',
-    '<div class="sec-num" style="margin-bottom:14px">/// 05 · مكاننا</div>');
+/* ==================== 06 · LOCATION ==================== */
+rep('<div class="sec-num" style="margin-bottom:14px">/// 06 · Where We Stand</div>',
+    '<div class="sec-num" style="margin-bottom:14px">/// 06 · مكاننا</div>');
 rep('<h2 class="mask">Based in Zagazig.<br>Built for <em>ambition.</em></h2>',
     '<h2 class="mask">مقرّنا الزقازيق.<br>مبنيين <em>للطموح.</em></h2>');
 rep(`<p style="margin-top:22px">Sharqia's businesses have been told the same thing for years: settle for templates, settle for "good enough," settle for agencies whose own pages look abandoned and whose developers are somebody else's freelancer.</p>`,
@@ -401,8 +448,8 @@ rep('<div class="country">Sharqia · Egypt</div>', '<div class="country">الش�
 rep('<p class="serve">Serving Zagazig, 10th of Ramadan, Belbeis, and brands across Egypt.</p>',
     '<p class="serve">بنخدم الزقازيق والعاشر من رمضان وبلبيس، وبراندات في كل مصر.</p>');
 
-/* ==================== 06 · FAQ ==================== */
-rep('<div class="sec-num">/// 06 · Questions, Answered</div>', '<div class="sec-num">/// 06 · أسئلة، وإجابات</div>');
+/* ==================== 07 · FAQ ==================== */
+rep('<div class="sec-num">/// 07 · Questions, Answered</div>', '<div class="sec-num">/// 07 · أسئلة، وإجابات</div>');
 rep('<h2 class="mask">Asked &amp; <em>answered.</em></h2>', '<h2 class="mask">اتسأل و<em>اتجاوب.</em></h2>');
 
 rep('<summary>How does Primus Digital price its work?<span class="x">+</span></summary>',

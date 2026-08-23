@@ -45,6 +45,20 @@ const PROOF = [
     highlights: ['15.9 MB on first mobile load, on paid traffic', 'The two heaviest assets were client-uploaded', 'A fabricated stock counter inventing urgency', 'An invented review rating written into the page schema'],
     measured_at: ['390 px', '1440 px'],
     disclosure: 'Findings only, no fixes. Name, domain and screenshots withheld.'
+  },
+  {
+    type: 'Public artifact',
+    name: 'This website (primusdigitalagency.vercel.app)',
+    scope: 'Published as proof in its own right; every claim is verifiable from outside',
+    capabilities: [
+      'One static document, no build step, no framework, no third-party script',
+      'Arabic build generated from the English source so the two cannot drift apart',
+      'Skip link, visible focus, WCAG AA contrast, reduced motion honoured',
+      'HSTS, framing denied, MIME sniffing off, permissions closed by default',
+      'Machine-readable: structured data, llms.txt, markdown mirror, live MCP endpoint',
+      'Performance measured on a throttled mid-range phone'
+    ],
+    disclosure: 'Verifiable directly: read the page source, inspect the response headers, or fetch /index.md.'
   }
 ];
 
@@ -83,7 +97,7 @@ const TOOLS = [
   },
   {
     name: 'get_proof',
-    description: 'List published Primus Digital proof: one SaaS platform built end to end, and two paid Measured Audits published anonymised. No client data, figures or screenshots from the live SaaS are exposed.',
+    description: 'List published Primus Digital proof: one SaaS platform built end to end, two paid Measured Audits published anonymised, and this website itself as a verifiable public artifact. No client data, figures or screenshots from the live SaaS are exposed.',
     inputSchema: { type: 'object', properties: {}, additionalProperties: false }
   },
   {
