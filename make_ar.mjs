@@ -214,7 +214,7 @@ rep('>See The Work</a>', '>شوف أعمالنا</a>');
 
 /* ==================== MARQUEE ==================== */
 rep('<span>Software &amp; SaaS <i>///</i></span><span>Web Platforms <i>///</i></span><span>Automation <i>///</i></span><span>Coverage &amp; Film <i>///</i></span><span>Social Media Management <i>///</i></span><span>Media Buying <i>///</i></span>',
-    '<span>برمجيات و SaaS <i>///</i></span><span>منصات ويب <i>///</i></span><span>أتمتة <i>///</i></span><span>تغطية وتصوير <i>///</i></span><span>إدارة سوشيال ميديا <i>///</i></span><span>Media Buying <i>///</i></span>');
+    '<span>برمجيات و انظمة حديثة <i>///</i></span><span>منصات ويب <i>///</i></span><span>أتمتة <i>///</i></span><span>تغطية وتصوير <i>///</i></span><span>إدارة سوشيال ميديا <i>///</i></span><span>انشاء الاعلانات الممولة <i>///</i></span>');
 
 /* ==================== MANIFESTO ==================== */
 rep('<h2>Most agencies manage pages.<br>We <em>engineer presence.</em></h2>',

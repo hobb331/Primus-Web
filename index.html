@@ -353,7 +353,8 @@
     border-top:1px solid var(--line);border-bottom:1px solid var(--line);
     overflow:hidden;padding:20px 0;background:rgba(16,19,20,.92);white-space:nowrap;
   }
-  .marquee-track{display:inline-block;animation:scroll 36s linear infinite}
+  .marquee-track{display:flex;width:max-content;animation:scroll 36s linear infinite}
+  .mq-half{display:flex;flex:none;min-width:100vw;justify-content:space-around}
   .marquee span{
     font-family:'Playfair Display',serif;font-size:15px;letter-spacing:.34em;
     text-transform:uppercase;color:var(--silver);margin:0 28px;
@@ -796,8 +797,8 @@
 <!-- ================ MARQUEE ================ -->
 <div class="marquee" aria-hidden="true">
   <div class="marquee-track">
-    <span>Software &amp; SaaS <i>///</i></span><span>Web Platforms <i>///</i></span><span>Automation <i>///</i></span><span>Coverage &amp; Film <i>///</i></span><span>Social Media Management <i>///</i></span><span>Media Buying <i>///</i></span>
-    <span>Software &amp; SaaS <i>///</i></span><span>Web Platforms <i>///</i></span><span>Automation <i>///</i></span><span>Coverage &amp; Film <i>///</i></span><span>Social Media Management <i>///</i></span><span>Media Buying <i>///</i></span>
+    <div class="mq-half"><span>Software &amp; SaaS <i>///</i></span><span>Web Platforms <i>///</i></span><span>Automation <i>///</i></span><span>Coverage &amp; Film <i>///</i></span><span>Social Media Management <i>///</i></span><span>Media Buying <i>///</i></span></div>
+    <div class="mq-half"><span>Software &amp; SaaS <i>///</i></span><span>Web Platforms <i>///</i></span><span>Automation <i>///</i></span><span>Coverage &amp; Film <i>///</i></span><span>Social Media Management <i>///</i></span><span>Media Buying <i>///</i></span></div>
   </div>
 </div>
 
