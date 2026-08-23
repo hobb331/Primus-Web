@@ -145,7 +145,7 @@ const JSONLD = `<script type="application/ld+json">
 const AR_STYLE = `
   /* ---------------- ARABIC / RTL ---------------- */
   body{font-family:'Tajawal','Inter',sans-serif;font-weight:400}
-  .hero h1,.sec-head h2,.manifesto h2,.svc h3,.band-card h3,.step h4,.pack h3,
+  .hero h1,.sec-head h2,.manifesto h2,.svc h3,.band-card h3,.step h3,.pack h3,
   .case-main h3,.loc h2,.faq summary,#contact h2,.loc-card .city,.marquee span{
     font-family:'Amiri','Playfair Display',serif;
   }
@@ -270,16 +270,16 @@ rep('<h2 class="mask">The Primus <em>Method.</em></h2>', '<h2 class="mask">من�
 rep('<p class="lede">Four moves. One standard. Every engagement follows the same engineered sequence, whether we are writing your codebase or running your feed.</p>',
     '<p class="lede">أربع خطوات. معيار واحد. كل تعاقد بيمشي بنفس التسلسل المهندَس، سواء بنكتب الـ codebase بتاعك أو بندير الفيد بتاعك.</p>');
 
-rep('<h4>AUDIT</h4>', '<h4>التدقيق</h4>');
+rep('<h3>AUDIT</h3>', '<h3>التدقيق</h3>');
 rep('<p>We measure what already exists and find where money and attention leak. Site, product, ads, feed, competitors.</p>',
     '<p>بنقيس اللي موجود فعلًا ونلاقي مكان تسريب الفلوس والانتباه. الموقع، المنتج، الإعلانات، الفيد، المنافسين.</p>');
-rep('<h4>ENGINEER</h4>', '<h4>الهندسة</h4>');
+rep('<h3>ENGINEER</h3>', '<h3>الهندسة</h3>');
 rep('<p>Strategy, software, identity, and content built as systems. Nothing improvised post by post or screen by screen.</p>',
     '<p>استراتيجية وسوفتوير وهوية ومحتوى، كلها متبنية كأنظمة. مفيش حاجة بتتعمل ارتجال بوست ورا بوست أو شاشة ورا شاشة.</p>');
-rep('<h4>AMPLIFY</h4>', '<h4>التضخيم</h4>');
+rep('<h3>AMPLIFY</h3>', '<h3>التضخيم</h3>');
 rep('<p>We ship it, then push it. Organic growth and paid media, mathematically managed and relentlessly optimised.</p>',
     '<p>بنطلّعه، وبعدين بندفعه. نمو أورجانيك وإعلانات ممولة، بتتدار بالرياضة وبتتحسّن من غير رحمة.</p>');
-rep('<h4>SCALE</h4>', '<h4>التوسع</h4>');
+rep('<h3>SCALE</h3>', '<h3>التوسع</h3>');
 rep('<p>Reporting, iteration, compounding results. Excellence maintained, not excellence announced once.</p>',
     '<p>تقارير وتكرار ونتائج بتتراكم. تميّز بيتحافظ عليه، مش تميّز بيتعلن مرة واحدة.</p>');
 
