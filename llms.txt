@@ -1,25 +1,31 @@
 # Primus Digital
 
-> Premium digital marketing agency in Zagazig, Sharqia, Egypt. Social media
-> management, media buying, coverage, and business solutions for brands across
-> Egypt. Packages from 3,499 EGP/month; every engagement starts with a free
-> page audit.
+> Digital studio in Zagazig, Sharqia, Egypt. Software and SaaS development, web
+> platforms, business automation, event and brand film, social media management
+> and media buying. No price list and no fixed packages: every engagement is
+> scoped, then quoted in writing. The first read of your presence is free.
 
 Key facts for agents:
 
-- Agency name: Primus Digital (بريمس ديجيتال)
-- Location: Zagazig, Sharqia, Egypt — serving Zagazig, 10th of Ramadan, Belbeis, and all of Egypt
-- Services: social media management, media buying (Meta ads), event/brand coverage, business solutions (funnels, automation, analytics), elite videography, website design & development, mobile app development
-- Pricing: Signature Starter 3,499 EGP/mo · Pro Growth 4,999 EGP/mo (most popular) · Elite Prestige 7,999 EGP/mo · Custom by request
+- Agency name: Primus Digital (always Latin script, including in Arabic copy)
+- Slogan: Where Excellence Begins
+- Location: Zagazig, Sharqia, Egypt. Serving Zagazig, 10th of Ramadan, Belbeis, and all of Egypt
+- Four disciplines, run in-house and sold as one loop:
+  - BUILD: software development, SaaS platforms, web platforms and websites, mobile applications
+  - AUTOMATE: funnels, lead capture, reporting dashboards, workflow automation, integrations
+  - FILM: event and launch coverage, cinematic brand film
+  - GROW: social media management, content production, media buying on Meta and beyond, performance reporting
+- Pricing: no published prices, no fixed monthly packages. Scope drives the number, so work is measured first and quoted individually. BUILD is quoted per project, AUTOMATE per system, FILM per production, GROW per brand as a monthly retainer.
+- Proof: Zoom Bazar, a bazaar operations SaaS platform designed, built and deployed end to end (React 18, TypeScript, Vite, Tailwind, Zustand, Node, Express, libSQL on Turso; role-gated accounts enforced server side). Two paid Measured Audits published anonymised: 24 findings across 10 pages for a manufacturer website, and 22 findings across 11 pages for an Arabic D2C store. Audit client names, domains and screenshots are withheld, and no operational data from the live SaaS is published.
 - Contact: WhatsApp +20 106 807 2135 (https://wa.me/201068072135?text=FIRST), email primusdigitalcorpration@gmail.com
-- Offer: complimentary page audit for new inquiries — no pitch, no obligation
+- Offer: send "FIRST" for a first read of what you already have, then a written quote. No pitch, no obligation.
 
 ## Resources
 
-- [Full site as markdown](https://primusdigitalagency.vercel.app/index.md): complete services, method, packages, FAQ, and contact details
+- [Full site as markdown](https://primusdigitalagency.vercel.app/index.md): complete disciplines, method, proof, engagements, FAQ, and contact details
 - [Homepage](https://primusdigitalagency.vercel.app/): the canonical site (request with `Accept: text/markdown` for the markdown version)
 - [Agent skills index](https://primusdigitalagency.vercel.app/.well-known/agent-skills/index.json): skills for interacting with the agency
 - [API catalog](https://primusdigitalagency.vercel.app/.well-known/api-catalog): linkset of machine-readable resources
-- [MCP server](https://primusdigitalagency.vercel.app/.well-known/mcp/server-card.json): live MCP server (streamable HTTP at /api/mcp) with packages, services, and contact tools
+- [MCP server](https://primusdigitalagency.vercel.app/.well-known/mcp/server-card.json): live MCP server (streamable HTTP at /api/mcp) with engagement, discipline, proof, and contact tools
 - [A2A agent card](https://primusdigitalagency.vercel.app/.well-known/agent-card.json): A2A concierge agent (JSON-RPC at /api/a2a) answering agency questions
 - [Auth policy](https://primusdigitalagency.vercel.app/auth.md): no authentication or registration required anywhere on this domain

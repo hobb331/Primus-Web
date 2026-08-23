@@ -1,37 +1,55 @@
 // Primus Digital — minimal A2A (Agent2Agent) endpoint, JSON-RPC over HTTP.
 // A deterministic concierge: answers questions about the agency's services,
-// packages, pricing, and contact flow. No streaming, no long-running tasks.
+// disciplines, how work is priced, and the contact flow. No streaming, no
+// long-running tasks. There is no price list to serve: everything is quoted.
 
 const OVERVIEW =
-  'Primus Digital is a digital marketing agency in Zagazig, Sharqia, Egypt, serving brands across Egypt. ' +
-  'Core services: social media management, media buying, coverage, and business solutions; ' +
-  'exclusive services: elite videography, website design & development, and mobile app development. ' +
-  'Packages: Signature Starter 3,499 EGP/mo, Pro Growth 4,999 EGP/mo (most popular), Elite Prestige 7,999 EGP/mo, Custom by request. ' +
-  'Every engagement starts with a complimentary page audit. ' +
+  'Primus Digital is a digital studio in Zagazig, Sharqia, Egypt, serving brands across Egypt. ' +
+  'Four disciplines, run in-house and sold as one loop: BUILD (software, SaaS platforms, web platforms, websites, mobile apps), ' +
+  'AUTOMATE (funnels, lead capture, dashboards, workflow automation, integrations), ' +
+  'FILM (event and launch coverage, cinematic brand film), and ' +
+  'GROW (social media management, content production, media buying, performance reporting). ' +
+  'There is no price list and no fixed package: scope drives the number, so every engagement is measured first and quoted individually in writing. ' +
+  'Proof: Zoom Bazar, a bazaar operations SaaS platform designed, built and deployed end to end, plus two paid Measured Audits published anonymised. ' +
+  'The first read of your presence is free. ' +
   'Contact: WhatsApp +20 106 807 2135 (https://wa.me/201068072135?text=FIRST) or primusdigitalcorpration@gmail.com. ' +
   'Full details: https://primusdigitalagency.vercel.app/index.md';
 
 const PRICING =
-  'Primus Digital packages (EGP, monthly): ' +
-  'Signature Starter — 3,499 EGP/mo (2 reels, 10 posts, Facebook moderation). ' +
-  'Pro Growth — 4,999 EGP/mo, most popular (4 reels, 15 posts, FB+IG moderation, monthly report). ' +
-  'Elite Prestige — 7,999 EGP/mo (6 reels, 20 posts, all-platform moderation, weekly reports, priority editing & shooting). ' +
-  'Custom — by request. All packages begin with a free page audit. ' +
-  'To start: https://wa.me/201068072135?text=FIRST';
+  'Primus Digital publishes no prices and sells no fixed monthly package. Scope drives the number: platforms, ' +
+  'output volume, integrations, shoot days, and how much of the system already exists all move it. ' +
+  'BUILD is quoted per project, AUTOMATE per system, FILM per production, and GROW per brand as a monthly retainer. ' +
+  'The process: you give the scope, we measure what already exists, and you receive a written quote with the work itemised. ' +
+  'The first read costs nothing. To start: https://wa.me/201068072135?text=FIRST';
+
+const PROOF =
+  'Published Primus Digital proof. Zoom Bazar: a bazaar operations SaaS platform carried from blank page to production, ' +
+  'covering product design, architecture, build and deployment (React 18, TypeScript, Vite, Tailwind, Zustand on the interface; ' +
+  'Node, Express and libSQL on Turso behind it), with role-gated accounts enforced on the server. It is a private platform and ' +
+  'no operational records, figures or screenshots from it are published. ' +
+  'Two paid Measured Audits are published fully anonymised, findings only, no fixes: a manufacturer website, 24 findings across ' +
+  '10 pages, whose first finding was that the site published no contact channel at all; and an Arabic D2C store, 22 findings ' +
+  'across 11 pages, weighing 15.9 MB on first mobile load with a fabricated stock counter and an invented review rating in its ' +
+  'page schema. Client names, domains and screenshots are withheld.';
 
 const CONTACT =
-  'Contact Primus Digital: WhatsApp +20 106 807 2135 — send "FIRST" to receive a complimentary page audit ' +
+  'Contact Primus Digital: WhatsApp +20 106 807 2135. Send "FIRST" for a first read of what you already have, ' +
+  'followed by a written quote scoped to the work ' +
   '(https://wa.me/201068072135?text=FIRST). Email: primusdigitalcorpration@gmail.com. ' +
   'Facebook: https://www.facebook.com/profile.php?id=61587403386997 · Instagram: https://www.instagram.com/primusdigital.global';
 
 const SERVICES =
-  'Primus Digital services — core: social media management, media buying (Meta ads), event/brand coverage, ' +
-  'business solutions (funnels, automation, analytics). Exclusive: elite videography, website design & development, ' +
-  'mobile app development. Based in Zagazig; serving Zagazig, 10th of Ramadan, Belbeis, and brands across Egypt.';
+  'Primus Digital disciplines. BUILD: software development, SaaS platforms, web platforms and websites, mobile applications. ' +
+  'AUTOMATE: funnels, lead capture, reporting dashboards, workflow automation, integrations. ' +
+  'FILM: event and launch coverage, cinematic brand film. ' +
+  'GROW: social media management, content production, media buying on Meta and beyond, performance reporting. ' +
+  'All four run in-house and are sold as one loop; take one or take the loop. Each is scoped, then quoted. ' +
+  'Based in Zagazig, serving Zagazig, 10th of Ramadan, Belbeis, and brands across Egypt.';
 
 function answer(q) {
   const t = (q || '').toLowerCase();
-  if (/(price|cost|package|how much|سعر|اسعار|أسعار|باقة|باقات)/.test(t)) return PRICING;
+  if (/(price|pricing|cost|quote|package|budget|how much|سعر|اسعار|أسعار|باقة|باقات|عرض سعر)/.test(t)) return PRICING;
+  if (/(case study|portfolio|proof|work|example|saas|audit|zoom bazar|اعمال|أعمال|سابقة)/.test(t)) return PROOF;
   if (/(contact|whatsapp|email|phone|reach|تواصل|واتس|ايميل)/.test(t)) return CONTACT;
   if (/(service|offer|what do you do|خدمة|خدمات)/.test(t)) return SERVICES;
   return OVERVIEW;

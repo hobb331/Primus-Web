@@ -1,7 +1,7 @@
 {
   "protocolVersion": "0.3.0",
   "name": "Primus Digital Concierge",
-  "description": "Information agent for Primus Digital, a digital marketing agency in Zagazig, Sharqia, Egypt. Answers questions about services, packages, EGP pricing, areas served, and how to start an engagement (WhatsApp free-audit flow). Responds synchronously in plain text; understands English and Arabic keywords.",
+  "description": "Information agent for Primus Digital, a digital studio in Zagazig, Sharqia, Egypt. Answers questions about the four disciplines (BUILD, AUTOMATE, FILM, GROW), published work, how engagements are scoped and quoted, areas served, and how to start. The studio publishes no price list. Responds synchronously in plain text; understands English and Arabic keywords.",
   "version": "1.0.0",
   "url": "https://primusdigitalagency.vercel.app/api/a2a",
   "preferredTransport": "JSONRPC",
@@ -26,9 +26,9 @@
     {
       "id": "agency-info",
       "name": "Agency information",
-      "description": "Answers questions about Primus Digital's services, packages, pricing in EGP, and areas served in Egypt.",
+      "description": "Answers questions about Primus Digital's disciplines, published work, how engagements are scoped and quoted, and areas served in Egypt.",
       "tags": ["marketing", "agency", "egypt", "zagazig", "pricing"],
-      "examples": ["What packages do you offer?", "How much does social media management cost?", "ما هي أسعار الباقات؟"]
+      "examples": ["What do you build?", "How do you price a SaaS build?", "Can I see your work?", "ازاي بتحسبوا سعر الشغل؟"]
     },
     {
       "id": "start-engagement",

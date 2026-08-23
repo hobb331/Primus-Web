@@ -1,8 +1,8 @@
-# Primus Digital — Where Excellence Begins
+# Primus Digital · Where Excellence Begins
 
-Digital marketing agency in Zagazig, Sharqia, Egypt. Social media management,
-media buying, coverage, and business solutions — engineered with the precision
-your brand deserves. Not posted. Positioned.
+Digital studio in Zagazig, Sharqia, Egypt. We build the software, automate the
+operation, film the work, and grow the audience. One studio, the whole path.
+Not posted. Positioned.
 
 - Website: https://primusdigitalagency.vercel.app/
 - WhatsApp: +20 106 807 2135 (https://wa.me/201068072135?text=FIRST)
@@ -13,77 +13,123 @@ your brand deserves. Not posted. Positioned.
 > Most agencies manage pages. We engineer presence.
 > Strategy before posts. Data before opinions. Results before applause.
 
-## Services
+## Pricing model
 
-1. **Social Media Management** — We run your social media like a chess game:
-   every post a calculated move toward authority, attention, and revenue.
-2. **Media Buying** — Paid ads on Meta and beyond, mathematically managed and
-   relentlessly optimized.
-3. **Coverage** — Openings, events, and launches — shot, cut, and published
-   while the moment is still hot.
-4. **Business Solutions** — Funnels, automation, analytics, and lead systems:
-   the machinery behind brands that scale.
+Primus Digital publishes no price list and sells no fixed monthly package.
+Scope drives the number: platforms, output volume, integrations, shoot days,
+and how much of the system already exists all move it. We measure what you
+already have, then send a written quote with the work itemised. The first read
+of your presence costs nothing.
+
+## The four disciplines
+
+Run in-house, sold as one closed loop. Take one, or take the loop.
+
+1. **BUILD · Software, SaaS & Web** - Websites, web platforms, and full SaaS
+   products. Architecture, database, interface, deployment. Mobile applications
+   to the same standard. Scoped, then quoted per project.
+2. **AUTOMATE · Systems & Infrastructure** - Funnels, lead capture, reporting
+   dashboards, workflow automation, and integrations between the tools you
+   already own. Scoped, then quoted per system.
+3. **FILM · Coverage & Brand Film** - Event and launch coverage, cinematic
+   brand film, direction through delivery. Scoped, then quoted per production.
+4. **GROW · Social & Media Buying** - Social media management, content
+   production, media buying on Meta and beyond, performance reporting. Scoped,
+   then quoted per brand as a monthly retainer.
 
 ## The Primus Method
 
-1. **Audit** — We find where your money and attention leak: your page, your ads, your competitors.
-2. **Engineer** — Strategy, identity, and content built like systems — not improvised post by post.
-3. **Amplify** — Organic growth and paid media, mathematically managed and relentlessly optimized.
-4. **Scale** — Reporting, iteration, compounding results. Excellence, maintained month after month.
+1. **Audit** - We measure what already exists and find where money and
+   attention leak. Site, product, ads, feed, competitors.
+2. **Engineer** - Strategy, software, identity, and content built as systems.
+   Nothing improvised post by post or screen by screen.
+3. **Amplify** - We ship it, then push it. Organic growth and paid media,
+   mathematically managed and relentlessly optimised.
+4. **Scale** - Reporting, iteration, compounding results.
 
-## Packages (EGP, monthly)
+## Proof
 
-| Package | Price | Includes |
-|---|---|---|
-| Signature Starter | 3,499 EGP/month | 2 Reels, 10 Posts, Facebook moderation |
-| Pro Growth (most popular) | 4,999 EGP/month | 4 Reels, 15 Posts, FB + IG moderation, monthly performance report |
-| Elite Prestige | 7,999 EGP/month | 6 Reels, 20 Posts, all-platform moderation, weekly reports, priority editing & shooting |
-| Custom | Price by request | Every service, tailored to your brand's goals, platforms, and budget |
+### Zoom Bazar · SaaS platform
 
-All packages begin with a complimentary audit of your page — the first move is free.
+A bazaar operations platform carried from blank page to production: booth and
+vendor tracking, cost and progress boards, an interactive floor model, and
+Arabic-first RTL interface work throughout.
 
-## Exclusive Services
+- Scope: product design, architecture, build, deployment
+- Interface: React 18, TypeScript, Vite, Tailwind, Zustand
+- Service: Node, Express, libSQL on Turso
+- Access: role-gated accounts enforced on the server, hashed credentials,
+  server-side sessions
+- Hardening: parameterised queries, column allowlists, rate limiting, CSRF
 
-- **Elite Videography** — cinematic, professional-grade video production from concept to final cut.
-- **Website Design & Development** — bespoke, luxury-grade websites engineered to convert.
-- **Mobile App Development** — custom mobile applications engineered for performance, designed for elegance.
+Private platform, login only. No operational records, figures or screenshots
+from the live product are published anywhere.
+
+### Measured Audit · manufacturer website (anonymised)
+
+24 findings across 10 pages, findings only, no fixes.
+
+- Finding 01: no contact channel published anywhere on the site
+- 15 different text sizes
+- 8 button designs, 8 corner radii
+- 25 separate letter-spacing values
+
+Name, domain and screenshots withheld.
+
+### Measured Audit · Arabic D2C store (anonymised)
+
+22 findings across 11 pages, findings only, no fixes. Measured at 390 px and
+1440 px.
+
+- 15.9 MB on first mobile load, on paid traffic
+- The two heaviest assets were uploaded through the client's own dashboard
+- A fabricated stock counter inventing urgency
+- An invented review rating written into the page schema for products with no
+  reviews
+
+Name, domain and screenshots withheld.
 
 ## Location
 
 Based in Zagazig, Sharqia, Egypt. Serving Zagazig, 10th of Ramadan, Belbeis,
-and brands across Egypt. Strategy, reporting, and media buying are handled
-remotely; coverage and videography are scheduled on location.
+and brands across Egypt. Software, strategy, reporting and media buying are
+handled remotely. Coverage and film are scheduled on location.
 
 ## FAQ
 
-**How much does social media management cost in Zagazig?**
-Packages start at 3,499 EGP/month (Signature Starter), 4,999 EGP/month for Pro
-Growth — the most popular — and 7,999 EGP/month for Elite Prestige. Custom
-packages are priced by request; every engagement begins with a free page audit.
+**How does Primus Digital price its work?**
+Every engagement is quoted individually. There are no fixed monthly packages,
+because scope drives the number. You tell us the scope, we measure what already
+exists, and you receive a written quote with the work itemised.
 
-**Which areas does Primus Digital serve?**
-Based in Zagazig, serving businesses across Sharqia — including 10th of Ramadan
-and Belbeis — as well as brands anywhere in Egypt.
+**Why no price list?**
+A price list is a guess published before anyone looked at your business. It
+either overcharges the simple job or quietly strips the complicated one down
+until it fits the number.
+
+**Do you build software and SaaS platforms?**
+Yes. Websites, web platforms and full SaaS products, covering architecture,
+database, interface and deployment. Mobile applications too.
 
 **What services does Primus Digital offer?**
-Social media management, media buying, event/brand coverage, and business
-solutions; plus elite videography, website design and development, and mobile
-app development.
+Four disciplines sold as one closed loop: BUILD, AUTOMATE, FILM, GROW.
+
+**Which areas does Primus Digital serve?**
+Based in Zagazig, serving businesses across Sharqia, including 10th of Ramadan
+and Belbeis, as well as brands anywhere in Egypt.
 
 **What makes Primus different from other agencies in Egypt?**
-Most agencies sell volume — posts per month. We engineer presence: strategy
-before posts, data before opinions, results before applause.
+Most agencies sell volume, measured in posts per month. We engineer presence,
+and we can build the product that presence points at.
 
 **How do I start working with Primus Digital?**
 Message "FIRST" on WhatsApp (+20 106 807 2135) or email
-primusdigitalcorpration@gmail.com. You'll receive a complimentary audit of your
-page — no pitch, no obligation.
-
-**Do you build websites and mobile apps?**
-Yes — both are part of our Exclusive Services.
+primusdigitalcorpration@gmail.com. You receive a first read of where your
+presence leaks attention and money, then a quote scoped to the work you
+actually need.
 
 ## Contact
 
-Ready to begin? Message "FIRST" on WhatsApp: https://wa.me/201068072135?text=FIRST
-or email primusdigitalcorpration@gmail.com — you'll receive a complimentary
-audit of your page, no pitch, no obligation.
+Ready to begin? Message "FIRST" on WhatsApp:
+https://wa.me/201068072135?text=FIRST or email
+primusdigitalcorpration@gmail.com. No pitch, no price list, no obligation.

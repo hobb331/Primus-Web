@@ -1,18 +1,62 @@
 // Primus Digital — minimal MCP server (streamable HTTP, stateless, no deps).
-// Read-only information tools about the agency: packages, services, contact.
+// Read-only information tools about the studio: engagements, disciplines,
+// proof, contact. No prices are served: every engagement is scoped, then quoted.
 
 const SITE = 'https://primusdigitalagency.vercel.app';
 
-const PACKAGES = [
-  { name: 'Signature Starter Pack', price: '3,499 EGP/month', includes: ['2 Reels', '10 Posts', 'Facebook Moderation'] },
-  { name: 'Pro Growth Pack', price: '4,999 EGP/month', popular: true, includes: ['4 Reels', '15 Posts', 'FB + IG Moderation', 'Monthly Performance Report'] },
-  { name: 'Elite Prestige Pack', price: '7,999 EGP/month', includes: ['6 Reels', '20 Posts', 'All Platforms Moderation', 'Weekly Performance Reports', 'Priority Editing & Shooting'] },
-  { name: 'Custom Pack', price: 'By request', includes: ['Every service, tailored to your goals, platforms, and budget'] }
+const ENGAGEMENTS = [
+  { key: 'BUILD', name: 'Software, SaaS & Web', pricing: 'Scoped, then quoted per project', includes: ['SaaS platforms and web apps', 'Websites and landing systems', 'Mobile applications', 'Architecture, build, deployment'] },
+  { key: 'GROW', name: 'Social & Media Buying', pricing: 'Scoped, then quoted per brand as a monthly retainer', popular: true, includes: ['Social media management', 'Content production and editing', 'Meta and platform ad buying', 'Performance reporting'] },
+  { key: 'AUTOMATE', name: 'Systems & Infrastructure', pricing: 'Scoped, then quoted per system', includes: ['Funnels and lead capture', 'Reporting dashboards', 'Workflow automation', 'Integrations between the tools you own'] },
+  { key: 'FILM', name: 'Coverage & Brand Film', pricing: 'Scoped, then quoted per production', includes: ['Event and launch coverage', 'Cinematic brand film', 'Direction, shoot, edit, delivery'] }
+];
+
+const PRICING_MODEL = {
+  price_list: false,
+  fixed_packages: false,
+  summary: 'Primus Digital publishes no price list and sells no fixed monthly package. Scope drives the number: platforms, output volume, integrations, shoot days, and how much of the system already exists all move it.',
+  process: ['You give the scope', 'We measure what already exists', 'You receive a written quote with the work itemised'],
+  first_read: 'The first read of your presence costs nothing.'
+};
+
+const PROOF = [
+  {
+    type: 'SaaS platform',
+    name: 'Zoom Bazar',
+    scope: 'Product design, architecture, build, deployment',
+    capabilities: ['Booth and vendor tracking', 'Cost and progress boards', 'Interactive floor model', 'Arabic-first RTL interface'],
+    stack: ['React 18', 'TypeScript', 'Vite', 'Tailwind', 'Zustand', 'Node', 'Express', 'libSQL on Turso'],
+    hardening: ['Role-gated accounts enforced server side', 'Hashed credentials', 'Server-side sessions', 'Parameterised queries and column allowlists', 'Rate limiting and CSRF'],
+    disclosure: 'Private platform, login only. No operational records, figures or screenshots from the live product are published.'
+  },
+  {
+    type: 'Measured Audit',
+    subject: 'Manufacturer website (anonymised)',
+    findings: 24,
+    pages: 10,
+    highlights: ['Finding 01: no contact channel published anywhere on the site', '15 different text sizes', '8 button designs and 8 corner radii', '25 separate letter-spacing values'],
+    disclosure: 'Findings only, no fixes. Name, domain and screenshots withheld.'
+  },
+  {
+    type: 'Measured Audit',
+    subject: 'Arabic D2C store (anonymised)',
+    findings: 22,
+    pages: 11,
+    highlights: ['15.9 MB on first mobile load, on paid traffic', 'The two heaviest assets were client-uploaded', 'A fabricated stock counter inventing urgency', 'An invented review rating written into the page schema'],
+    measured_at: ['390 px', '1440 px'],
+    disclosure: 'Findings only, no fixes. Name, domain and screenshots withheld.'
+  }
 ];
 
 const SERVICES = {
-  core: ['Social Media Management', 'Media Buying', 'Coverage', 'Business Solutions'],
-  exclusive: ['Elite Videography', 'Website Design & Development', 'Mobile App Development'],
+  disciplines: {
+    BUILD: ['Software development', 'SaaS platform development', 'Web platforms and websites', 'Mobile applications'],
+    AUTOMATE: ['Funnels and lead capture', 'Reporting dashboards', 'Workflow automation', 'Integrations'],
+    FILM: ['Event and launch coverage', 'Cinematic brand film'],
+    GROW: ['Social media management', 'Content production', 'Media buying on Meta and beyond', 'Performance reporting']
+  },
+  model: 'All four run in-house and are sold as one closed loop. Take one, or take the loop.',
+  pricing: PRICING_MODEL.summary,
   location: 'Zagazig, Sharqia, Egypt',
   serving: ['Zagazig', '10th of Ramadan', 'Belbeis', 'brands across Egypt']
 };
@@ -23,18 +67,23 @@ const CONTACT = {
   email: 'primusdigitalcorpration@gmail.com',
   facebook: 'https://www.facebook.com/profile.php?id=61587403386997',
   instagram: 'https://www.instagram.com/primusdigital.global',
-  note: 'Message "FIRST" on WhatsApp to receive a complimentary page audit — no pitch, no obligation.'
+  note: 'Message "FIRST" on WhatsApp for a first read of what you already have, then a written quote scoped to the work. No pitch, no price list, no obligation.'
 };
 
 const TOOLS = [
   {
-    name: 'get_packages',
-    description: "List Primus Digital's social media marketing packages with monthly EGP pricing and what each includes.",
+    name: 'get_engagements',
+    description: "List Primus Digital's four engagement types (BUILD, GROW, AUTOMATE, FILM), what each includes, and how each is quoted. There is no price list: every engagement is scoped, then quoted individually.",
     inputSchema: { type: 'object', properties: {}, additionalProperties: false }
   },
   {
     name: 'get_services',
-    description: 'List the services Primus Digital offers (core and exclusive) and the areas served.',
+    description: 'List the four disciplines Primus Digital runs in-house (BUILD, AUTOMATE, FILM, GROW), what sits under each, and the areas served.',
+    inputSchema: { type: 'object', properties: {}, additionalProperties: false }
+  },
+  {
+    name: 'get_proof',
+    description: 'List published Primus Digital proof: one SaaS platform built end to end, and two paid Measured Audits published anonymised. No client data, figures or screenshots from the live SaaS are exposed.',
     inputSchema: { type: 'object', properties: {}, additionalProperties: false }
   },
   {
@@ -57,8 +106,9 @@ const TOOLS = [
 
 function callTool(name, args) {
   switch (name) {
-    case 'get_packages': return PACKAGES;
+    case 'get_engagements': return { pricing_model: PRICING_MODEL, engagements: ENGAGEMENTS };
     case 'get_services': return SERVICES;
+    case 'get_proof': return PROOF;
     case 'get_contact_options': return CONTACT;
     case 'get_inquiry_link': {
       const msg = (args && typeof args.message === 'string' && args.message.trim()) || 'FIRST';
@@ -117,7 +167,7 @@ module.exports = async (req, res) => {
           protocolVersion: (msg.params && msg.params.protocolVersion) || '2025-06-18',
           capabilities: { tools: { listChanged: false } },
           serverInfo: { name: 'primus-digital-info', title: 'Primus Digital — Agency Info', version: '1.0.0' },
-          instructions: 'Read-only information server for Primus Digital, a digital marketing agency in Zagazig, Egypt. Use get_packages for EGP pricing, get_services for the service catalog, get_contact_options for channels, and get_inquiry_link to generate the WhatsApp free-audit link.'
+          instructions: 'Read-only information server for Primus Digital, a digital studio in Zagazig, Egypt. The studio publishes no prices: every engagement is scoped, then quoted. Use get_engagements for the engagement types and how each is quoted, get_services for the four disciplines, get_proof for published work, get_contact_options for channels, and get_inquiry_link to generate the WhatsApp inquiry link.'
         }
       });
     case 'ping':
