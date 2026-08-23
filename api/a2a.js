@@ -30,7 +30,10 @@ const PROOF =
   'Two paid Measured Audits are published fully anonymised, findings only, no fixes: a manufacturer website, 24 findings across ' +
   '10 pages, whose first finding was that the site published no contact channel at all; and an Arabic D2C store, 22 findings ' +
   'across 11 pages, weighing 15.9 MB on first mobile load with a fabricated stock counter and an invented review rating in its ' +
-  'page schema. Client names, domains and screenshots are withheld.';
+  'page schema. Client names, domains and screenshots are withheld. ' +
+  'This website is published as proof in its own right and can be verified from outside: one static document with no build ' +
+  'step or framework, an Arabic build generated from the English source so the two cannot drift apart, skip link and visible ' +
+  'focus with WCAG AA contrast, hardened response headers, and machine-readable mirrors including this endpoint.';
 
 const CONTACT =
   'Contact Primus Digital: WhatsApp +20 106 807 2135. Send "FIRST" for a first read of what you already have, ' +
