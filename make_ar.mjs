@@ -199,6 +199,8 @@ rep(`    <a href="#services">Services</a>
     <a href="/" lang="en">EN</a>
     <a href="#contact" class="nav-cta">ابدأ</a>`);
 
+rep('<a class="skip" href="#main">Skip to content</a>', '<a class="skip" href="#main">تخطَّ إلى المحتوى</a>');
+
 /* ==================== HERO ==================== */
 rep('<div class="kicker caps fade-in" style="--d:.15s">Digital Studio · Zagazig, Egypt</div>',
     '<div class="kicker caps fade-in" style="--d:.15s">استوديو رقمي · الزقازيق، مصر</div>');

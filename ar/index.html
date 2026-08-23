@@ -122,6 +122,14 @@
     --silver-dim:#686d6f;
   }
   *{margin:0;padding:0;box-sizing:border-box}
+  :focus-visible{outline:2px solid var(--porcelain);outline-offset:3px;border-radius:2px}
+  .skip{
+    position:fixed;top:-100px;inset-inline-start:16px;z-index:2000;
+    background:var(--porcelain);color:var(--charcoal);
+    padding:12px 20px;font-size:12px;letter-spacing:.18em;text-transform:uppercase;
+    text-decoration:none;transition:top .2s ease;
+  }
+  .skip:focus{top:16px}
   html{scroll-behavior:smooth}
   body{
     background:var(--bg);
@@ -570,6 +578,7 @@
   }
   #contact .cta-row{margin-top:50px;display:flex;gap:18px;justify-content:center;flex-wrap:wrap}
   #contact .small{margin-top:44px;color:var(--silver);font-size:12.5px;letter-spacing:.08em}
+  #contact .small a{display:inline-block;padding:6px 4px}
   #contact .small a{color:var(--silver);text-decoration:none;border-bottom:1px solid var(--line);transition:color .3s}
   #contact .small a:hover{color:var(--porcelain)}
 
@@ -763,6 +772,7 @@
 </style>
 </head>
 <body>
+<a class="skip" href="#main">تخطَّ إلى المحتوى</a>
 
 <!-- ================ LOADER ================ -->
 <div id="loader" aria-hidden="true">
@@ -815,6 +825,7 @@
 </nav>
 
 <!-- ================ HERO ================ -->
+<main id="main" tabindex="-1">
 <header class="hero" id="top">
   <div class="hero-inner">
     <div class="kicker caps fade-in" style="--d:.15s">استوديو رقمي · الزقازيق، مصر</div>
@@ -1169,6 +1180,8 @@
     <a href="https://www.instagram.com/primusdigital.global?igsh=aTRxcjF5MmpvN20=" target="_blank" rel="noopener">إنستجرام</a>
   </p>
 </section>
+
+</main>
 
 <!-- ================ FOOTER ================ -->
 <footer>
