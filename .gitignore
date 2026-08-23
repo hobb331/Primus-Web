@@ -7,3 +7,8 @@ loader-shot.png
 # OS noise
 Thumbs.db
 .DS_Store
+
+# vercel local credentials — never commit
+.env*.local
+.env
+.vercel
