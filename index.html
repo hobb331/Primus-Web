@@ -1655,6 +1655,13 @@ const idles = !reduced && !isTouch;
 const FRAME_MS = isTouch ? 1000 / 30 : 0;   // 60fps of this scene is not worth the heat
 let lastDraw = 0, lastKey = '';
 const clock = new THREE.Clock();
+
+// The mark is chiral. Past a quarter turn the slabs present their backs and the
+// brand reads \ instead of ///, so every yaw term below is individually
+// bounded and their amplitudes sum to just under MAX_YAW. The clamp is a guard
+// for future edits, not a behaviour: at full deflection the sum is 1.155.
+const MAX_YAW = 1.16;   // 66 degrees, against a 90 degree mirror point
+const clampYaw = v => v < -MAX_YAW ? -MAX_YAW : (v > MAX_YAW ? MAX_YAW : v);
 const heroInner = document.querySelector('.hero-inner');
 
 function frame(now){
@@ -1677,8 +1684,13 @@ function frame(now){
     b.rotation.y = turn * (1 + (i - 1) * .15);
   });
 
-  // scroll journey: a calm, partial revolution, drifting gently across the frame
-  group.rotation.y = sp * Math.PI * 1.6 + mx * .55 + (idles ? t * .045 : 0);
+  // scroll journey: the mark turns out of frame and realigns by the end of the
+  // page, the way the bars themselves do, and never far enough to mirror
+  group.rotation.y = clampYaw(
+    Math.sin(sp * Math.PI) * .72 +                 // scroll, out and back
+    mx * .55 +                                     // pointer, mx is bounded to +/-.5
+    (idles ? Math.sin(t * .19) * .16 : 0)          // idle: a slow breath, not a spin
+  );
   group.rotation.x = my * .35 + Math.sin(sp * Math.PI * 2) * .14;
   // lateral drift scaled to the viewport so the mark never leaves the frame on narrow screens
   group.position.x = Math.sin(sp * Math.PI * 1.5) * Math.min(1.9, camera.aspect * 1.05);
