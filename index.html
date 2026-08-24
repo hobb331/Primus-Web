@@ -270,8 +270,6 @@
   }
   @media(pointer:coarse){
     .cursor-dot,.cursor-ring{display:none}
-    /* backdrop blur is a scroll-jank source on mobile GPUs — solid tint instead */
-    nav.scrolled{-webkit-backdrop-filter:none;backdrop-filter:none;background:rgba(12,14,15,.97)}
   }
 
   /* ---------------- NAV ---------------- */
@@ -285,6 +283,13 @@
   nav.scrolled{
     background:rgba(12,14,15,.9);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);
     padding:14px 5vw;border-bottom-color:var(--line);
+  }
+  /* Blur is a scroll-jank source on mobile GPUs, and it also makes the bar a
+     containing block for the fixed menu sheet, which pins the sheet inside the
+     71px bar. Solid tint instead. This must stay AFTER nav.scrolled: the two
+     selectors have equal specificity, so source order is what decides. */
+  @media(pointer:coarse){
+    nav.scrolled{-webkit-backdrop-filter:none;backdrop-filter:none;background:rgba(12,14,15,.97)}
   }
   .nav-mark{
     font-family:'Playfair Display',serif;font-weight:700;font-size:17px;
@@ -306,16 +311,64 @@
   .burger{display:none;background:none;border:none;cursor:pointer;padding:8px}
   .burger span{display:block;width:24px;height:1px;background:var(--porcelain);margin:6px 0;transition:.3s}
   @media(max-width:880px){
+    /* a sheet of its own, not a dropdown hanging off the bar */
     .nav-links{
-      position:fixed;inset:0;background:rgba(12,14,15,.98);
-      flex-direction:column;justify-content:center;gap:18px;
-      opacity:0;pointer-events:none;transition:opacity .35s;
+      position:fixed;inset:0;z-index:99;
+      counter-reset:navi;
+      display:flex;flex-direction:column;align-items:stretch;justify-content:center;
+      gap:0;
+      padding:calc(104px + env(safe-area-inset-top,0px)) 8vw calc(44px + env(safe-area-inset-bottom,0px));
+      background:
+        radial-gradient(130% 70% at 88% 4%,rgba(244,242,236,.07),transparent 58%),
+        linear-gradient(180deg,#0d0f10,#090a0b);
+      overflow-y:auto;overscroll-behavior:contain;
+      opacity:0;pointer-events:none;
+      transition:opacity .38s ease;
     }
     .nav-links.open{opacity:1;pointer-events:auto}
-    .nav-links a{font-size:13px;padding:12px 18px}
-    .nav-cta{margin-left:0}
+    .nav-links a{
+      display:flex;align-items:baseline;gap:16px;
+      font-family:'Playfair Display',serif;font-weight:500;
+      font-size:clamp(25px,7.4vw,34px);line-height:1.12;
+      letter-spacing:0;text-transform:none;
+      color:var(--porcelain);
+      padding:17px 0;border-bottom:1px solid rgba(244,242,236,.09);
+      opacity:0;transform:translateY(16px);
+      transition:opacity .5s ease,transform .55s cubic-bezier(.16,1,.3,1),color .3s;
+    }
+    .nav-links a:not(.nav-cta)::before{
+      counter-increment:navi;
+      content:counter(navi,decimal-leading-zero);
+      font-family:'Inter',sans-serif;font-weight:500;
+      font-size:10px;letter-spacing:.22em;color:var(--silver-dim);
+      transform:translateY(-.6em);
+    }
+    .nav-links a:active{color:var(--silver)}
+    .nav-links.open a{opacity:1;transform:none}
+    .nav-links.open a:nth-child(1){transition-delay:.05s}
+    .nav-links.open a:nth-child(2){transition-delay:.10s}
+    .nav-links.open a:nth-child(3){transition-delay:.15s}
+    .nav-links.open a:nth-child(4){transition-delay:.20s}
+    .nav-links.open a:nth-child(5){transition-delay:.25s}
+    .nav-links.open a:nth-child(6){transition-delay:.30s}
+    .nav-links.open a:nth-child(7){transition-delay:.35s}
+    /* the CTA closes the list rather than continuing it */
+    /* .nav-links a is 0,0,1,1 and would otherwise win on text-transform and
+       tracking, so the CTA has to match its specificity rather than shout */
+    .nav-links a.nav-cta{
+      margin:30px 0 0;justify-content:center;
+      font-family:'Inter',sans-serif;font-weight:500;
+      font-size:11px;letter-spacing:.24em;text-transform:uppercase;
+      padding:19px 0;
+    }
     .burger{display:block;position:relative;z-index:101}
     body.menu-open{overflow:hidden}
+    body.menu-open .nav-mark{position:relative;z-index:101}
+    /* second guard on the containing block, independent of pointer type */
+    body.menu-open nav{
+      background:transparent;border-bottom-color:transparent;
+      -webkit-backdrop-filter:none;backdrop-filter:none;
+    }
     body.menu-open .burger span:nth-child(1){transform:translateY(7px) rotate(45deg)}
     body.menu-open .burger span:nth-child(2){opacity:0}
     body.menu-open .burger span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
@@ -772,6 +825,7 @@
     [data-par]{transform:none}
     .magnetic{transform:none!important}
     .svc::after{transition:none}
+    .nav-links a{transform:none;transition-duration:.01s;transition-delay:0s!important}
   }
 </style>
 </head>
@@ -816,7 +870,7 @@
 <div class="scroll-rail" aria-hidden="true"><i id="railFill"></i></div>
 <nav id="nav">
   <a class="nav-mark" href="#top"><svg class="tri-svg" viewBox="0 0 137.5 78" aria-hidden="true"><path d="M31.5 0H55.5L24 78H0Z"/><path d="M72.5 0H96.5L65 78H41Z"/><path d="M113.5 0H137.5L106 78H82Z"/></svg>PRIMUS DIGITAL</a>
-  <button class="burger" id="burger" aria-label="Menu"><span></span><span></span><span></span></button>
+  <button class="burger" id="burger" aria-label="Menu" aria-expanded="false" aria-controls="navLinks"><span></span><span></span><span></span></button>
   <div class="nav-links" id="navLinks">
     <a href="#services">Services</a>
     <a href="#method">Method</a>
@@ -1274,14 +1328,16 @@
   // mobile menu
   const burger = document.getElementById('burger');
   const links  = document.getElementById('navLinks');
-  burger.addEventListener('click', () => {
-    links.classList.toggle('open');
-    document.body.classList.toggle('menu-open');
+  const setMenu = open => {
+    links.classList.toggle('open', open);
+    document.body.classList.toggle('menu-open', open);
+    burger.setAttribute('aria-expanded', open ? 'true' : 'false');
+  };
+  burger.addEventListener('click', () => setMenu(!links.classList.contains('open')));
+  links.querySelectorAll('a').forEach(a => a.addEventListener('click', () => setMenu(false)));
+  addEventListener('keydown', e => {
+    if (e.key === 'Escape' && links.classList.contains('open')) { setMenu(false); burger.focus(); }
   });
-  links.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
-    links.classList.remove('open');
-    document.body.classList.remove('menu-open');
-  }));
 
   // reveal on scroll (single elements + staggered grids)
   const io = new IntersectionObserver(entries => {
@@ -1603,7 +1659,7 @@ const rim = new THREE.DirectionalLight(0xF4F2EC, .65); rim.position.set(-6, -3, 
 // ---- the /// mark as three brushed-metal bars ----
 const group = new THREE.Group(); scene.add(group);
 const mat = isTouch
-  ? new THREE.MeshPhongMaterial({color:0x46494c, specular:0xF4F2EC, shininess:30})
+  ? new THREE.MeshPhongMaterial({color:0x2a2d30, specular:0x101012, shininess:16})
   : new THREE.MeshStandardMaterial({color:0xc9c7c0, metalness:.92, roughness:.3});
 const barGeo = new THREE.BoxGeometry(.42, 3.6, .42);
 const bars = [];

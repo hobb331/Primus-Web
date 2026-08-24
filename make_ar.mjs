@@ -151,7 +151,16 @@ const AR_STYLE = `
   }
   .caps,.kicker,.sec-num,.btn,.pack ul li,.pack .badge,.loc-card .country,
   .pack-note,footer .mid,#contact .small,.svc-list li,.case-spec span{letter-spacing:.02em}
-  .nav-links a{letter-spacing:.04em;font-size:12.5px}
+  @media(min-width:881px){.nav-links a{letter-spacing:.04em;font-size:12.5px}}
+  @media(max-width:880px){
+    .nav-links a{
+      font-family:'Amiri','Playfair Display',serif;
+      font-size:clamp(23px,6.6vw,31px);letter-spacing:0;line-height:1.45;
+    }
+    .nav-links a:not(.nav-cta)::before{font-family:'Inter',sans-serif}
+    /* tracking must stay near zero here: spacing Arabic breaks letter joining */
+    .nav-links a.nav-cta{font-family:'Tajawal','Inter',sans-serif;font-size:12.5px;letter-spacing:.06em;text-transform:none}
+  }
   .caps{font-size:12.5px}
   .sec-num{font-size:12.5px}
   .btn{font-size:13px;font-weight:500;letter-spacing:.02em}
