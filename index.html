@@ -9,14 +9,18 @@
 <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
 <meta name="geo.region" content="EG-SHR">
 <meta name="geo.placename" content="Zagazig, Sharqia, Egypt">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 137.5 137.5'%3E%3Crect width='137.5' height='137.5' fill='%230c0e0f'/%3E%3Cg fill='%23F4F2EC' transform='translate(0,29.75)'%3E%3Cpath d='M31.5 0H55.5L24 78H0Z'/%3E%3Cpath d='M72.5 0H96.5L65 78H41Z'/%3E%3Cpath d='M113.5 0H137.5L106 78H82Z'/%3E%3C/g%3E%3C/svg%3E" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <link rel="canonical" href="https://primusdigitalagency.vercel.app/">
 <link rel="alternate" hreflang="en" href="https://primusdigitalagency.vercel.app/">
 <link rel="alternate" hreflang="ar" href="https://primusdigitalagency.vercel.app/ar/">
 <link rel="alternate" hreflang="x-default" href="https://primusdigitalagency.vercel.app/">
 <meta property="og:url" content="https://primusdigitalagency.vercel.app/">
-<!-- add a 1200x630 og-image.jpg to the repo, then uncomment:
 <meta property="og:image" content="https://primusdigitalagency.vercel.app/og-image.jpg">
--->
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:type" content="image/jpeg">
+<meta property="og:image:alt" content="Primus Digital · Where Excellence Begins. Software and SaaS, automation, film, and growth, from Zagazig, Egypt.">
 <meta property="og:title" content="Digital Agency in Zagazig | Software, SaaS &amp; Growth | Primus Digital">
 <meta property="og:description" content="One studio, the whole path. Software and SaaS, automation, film, and growth, engineered in Zagazig, Egypt. Every engagement is scoped, then quoted.">
 <meta property="og:type" content="website">
@@ -25,6 +29,8 @@
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Digital Agency in Zagazig | Software, SaaS &amp; Growth | Primus Digital">
 <meta name="twitter:description" content="Software, SaaS platforms, automation, film and growth. Engineered in Zagazig, Egypt. Scoped, then quoted.">
+<meta name="twitter:image" content="https://primusdigitalagency.vercel.app/og-image.jpg">
+<meta name="twitter:image:alt" content="Primus Digital · Where Excellence Begins.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,700;0,900;1,400;1,500;1,700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -122,7 +128,7 @@
     --line:#242a2c;
     --porcelain:#F4F2EC;
     --silver:#8A8D8F;
-    --silver-dim:#686d6f;
+    --silver-dim:#808587;
   }
   *{margin:0;padding:0;box-sizing:border-box}
   :focus-visible{outline:2px solid var(--porcelain);outline-offset:3px;border-radius:2px}
@@ -256,15 +262,17 @@
 
   /* ---- custom cursor ---- */
   @media(pointer:fine){
-    body, a, button, summary{cursor:none}
+    html.cur body, html.cur a, html.cur button, html.cur summary{cursor:none}
     .cursor-dot,.cursor-ring{
       position:fixed;top:0;left:0;pointer-events:none;z-index:999;
       border-radius:50%;transform:translate(-50%,-50%);
+      opacity:0;transition:opacity .3s ease;
     }
+    html.cur .cursor-dot,html.cur .cursor-ring{opacity:1}
     .cursor-dot{width:6px;height:6px;background:var(--porcelain)}
     .cursor-ring{
       width:34px;height:34px;border:1px solid rgba(244,242,236,.35);
-      transition:width .3s,height .3s,border-color .3s;
+      transition:width .3s,height .3s,border-color .3s,opacity .3s;
     }
     .cursor-ring.hov{width:56px;height:56px;border-color:rgba(244,242,236,.85)}
   }
@@ -384,10 +392,21 @@
   }
   .hero-inner{
     display:flex;flex-direction:column;align-items:center;
+    position:relative;isolation:isolate;
     transform:translate3d(calc(var(--mx,0)*-18px),calc(var(--my,0)*-12px),0);
     will-change:transform;
   }
-  .hero .kicker{color:var(--silver);margin-bottom:30px}
+  .hero .kicker,.hero .sub{position:relative;z-index:1}
+  .hero .kicker::before,.hero .sub::before{
+    content:"";position:absolute;z-index:-1;pointer-events:none;
+    left:50%;top:50%;transform:translate(-50%,-50%);
+    width:calc(100% + 210px);height:calc(100% + 86px);
+    background:radial-gradient(closest-side ellipse at 50% 50%,
+      rgba(8,10,11,.95) 0%,rgba(8,10,11,.93) 30%,rgba(8,10,11,.84) 46%,
+      rgba(8,10,11,.63) 60%,rgba(8,10,11,.4) 73%,rgba(8,10,11,.19) 85%,
+      rgba(8,10,11,.06) 93%,rgba(8,10,11,0) 100%);
+  }
+  .hero .kicker{color:#a3a7a8;margin-bottom:30px}
   .hero h1{
     font-family:'Playfair Display',serif;font-weight:500;
     font-size:clamp(44px,8.5vw,104px);line-height:1.08;letter-spacing:.01em;
@@ -407,7 +426,7 @@
   .btn:hover{background:var(--porcelain);color:var(--charcoal)}
   .btn.solid{background:var(--porcelain);color:var(--charcoal)}
   .btn.solid:hover{background:transparent;color:var(--porcelain)}
-  .btn.ghost-btn{border-color:var(--line);color:var(--silver)}
+  .btn.ghost-btn{border-color:rgba(244,242,236,.22);color:#b9bcbb}
   .btn.ghost-btn:hover{border-color:var(--porcelain);color:var(--porcelain);background:transparent}
   /* ---------------- MARQUEE ---------------- */
   .marquee{
@@ -655,6 +674,8 @@
   @media(max-width:560px){
     section{padding:90px 0 50px}
     .svc{padding:42px 28px}
+    .svc .ghost-num{top:24px;right:22px;font-size:46px;opacity:.06}
+    .exc .ghost-num{top:16px;right:20px;font-size:62px;opacity:.07}
     .exc{padding:44px 28px}
     .pack{padding:40px 26px 34px}
     .manifesto{padding:100px 20px}
@@ -1505,10 +1526,16 @@
     const dot = document.createElement('div'), ring = document.createElement('div');
     dot.className = 'cursor-dot'; ring.className = 'cursor-ring';
     document.body.append(dot, ring);
-    let x = innerWidth/2, y = innerHeight/2, rx2 = x, ry2 = y;
+    let x = innerWidth/2, y = innerHeight/2, rx2 = x, ry2 = y, live = false;
     addEventListener('mousemove', e => {
       x = e.clientX; y = e.clientY;
       dot.style.left = x + 'px'; dot.style.top = y + 'px';
+      if (!live){
+        // snap, do not glide in from the centre, and only now hide the real one
+        live = true; rx2 = x; ry2 = y;
+        ring.style.left = x + 'px'; ring.style.top = y + 'px';
+        document.documentElement.classList.add('cur');
+      }
     }, {passive:true});
     (function loop(){
       rx2 += (x - rx2) * .16; ry2 += (y - ry2) * .16;
@@ -1652,7 +1679,7 @@ addEventListener('resize', () => {
 }, {passive:true});
 
 // lighting — single porcelain key + cool rim, chiaroscuro
-scene.add(new THREE.AmbientLight(0xF4F2EC, .14));
+const amb = new THREE.AmbientLight(0xF4F2EC, .14); scene.add(amb);
 const key = new THREE.DirectionalLight(0xF4F2EC, 1.7); key.position.set(4, 6, 6);  scene.add(key);
 const rim = new THREE.DirectionalLight(0xF4F2EC, .65); rim.position.set(-6, -3, -4); scene.add(rim);
 
@@ -1701,8 +1728,31 @@ function progress(){
   const h = document.documentElement.scrollHeight - innerHeight;
   return h > 0 ? scrollY / h : 0;
 }
-addEventListener('scroll', () => { tsp = progress(); }, {passive:true});
+
+// ---------- hero-exit veil ----------
+// The mark has two jobs that pull against each other: it is the subject in the
+// hero, and it is the backdrop for every paragraph after it. Lit for the first
+// job it is unreadable-bright for the second. veil runs 0 (subject) to 1
+// (backdrop) across the first screenful, and the lights follow it.
+const VEIL_MAX = isTouch ? .85 : 1;
+const KEY_LIT = 2.6, KEY_DIM = .26;
+const RIM_LIT = .95, RIM_DIM = .13;
+const AMB_LIT = .2, AMB_DIM = .05;
+const STAR_LIT = .4, STAR_DIM = .18;
+// metalness .92 with no environment map means the whole read is one sharp
+// specular lobe, and a lobe that sharp still saturates to white at low light.
+// Measured: dimming the lights alone left the backdrop at 92% luminance under
+// running text. The highlight has to be spread and tinted down as well.
+const ROUGH_LIT = .3, ROUGH_DIM = .72;
+const MAT_LIT = mat.color.clone();
+const MAT_DIM = isTouch ? mat.color.clone().multiplyScalar(.5) : new THREE.Color(0x24272a);
+const lerp = (a, b, k) => a + (b - a) * k;
+const veilTarget = () => VEIL_MAX * Math.min(1, scrollY / (innerHeight * .9));
+let veil = 0, tveil = 0;
+
+addEventListener('scroll', () => { tsp = progress(); tveil = veilTarget(); }, {passive:true});
 tsp = progress();
+tveil = veil = veilTarget();   // a reload deep in the page must not flash the lit state
 
 const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
 // phones get no free-running idle drift: it keeps the GPU busy for motion no
@@ -1729,6 +1779,17 @@ function frame(now){
   const t = clock.getElapsedTime();
   mx += (tmx - mx) * .045;  my += (tmy - my) * .045;
   sp += (tsp - sp) * .055;
+  // once the veil has converged the lights and material already hold the right
+  // values, so the per-frame writes are pure cost until scroll moves again
+  if (VEIL_MAX && Math.abs(tveil - veil) > 1e-4){
+    veil += (tveil - veil) * .06;
+    key.intensity = lerp(KEY_LIT, KEY_DIM, veil);
+    rim.intensity = lerp(RIM_LIT, RIM_DIM, veil);
+    amb.intensity = lerp(AMB_LIT, AMB_DIM, veil);
+    stars.material.opacity = lerp(STAR_LIT, STAR_DIM, veil);
+    if (mat.isMeshStandardMaterial) mat.roughness = lerp(ROUGH_LIT, ROUGH_DIM, veil);
+    mat.color.lerpColors(MAT_LIT, MAT_DIM, veil);
+  }
 
   // bars breathe apart mid-journey, drift gently in idle,
   // and turn on their own axes like louvers — realigned by the end of the page
@@ -1776,7 +1837,7 @@ function frame(now){
   // with idle drift off, a phone that has stopped scrolling produces the exact
   // same frame forever. Rounding gives the damping a deadband to settle into.
   if (isTouch){
-    const key = sp.toFixed(4) + '|' + mx.toFixed(3) + '|' + my.toFixed(3);
+    const key = sp.toFixed(4) + '|' + mx.toFixed(3) + '|' + my.toFixed(3) + '|' + veil.toFixed(3);
     if (key === lastKey) return;
     lastKey = key;
   }

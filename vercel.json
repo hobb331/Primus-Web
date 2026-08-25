@@ -18,6 +18,13 @@
       "continue": true
     },
     {
+      "src": "^/(?:ar/)?(?:og-image.jpg|apple-touch-icon.png)$",
+      "headers": {
+        "Cache-Control": "public, max-age=86400, stale-while-revalidate=604800"
+      },
+      "continue": true
+    },
+    {
       "src": "^/$",
       "has": [
         {

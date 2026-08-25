@@ -37,6 +37,16 @@ rep('<meta property="og:url" content="https://primusdigitalagency.vercel.app/">'
     '<meta property="og:url" content="https://primusdigitalagency.vercel.app/ar/">');
 rep('<meta property="og:locale" content="en_US">', '<meta property="og:locale" content="ar_EG">');
 
+// The Arabic share card is its own render, not the English one relabelled.
+rep('<meta property="og:image" content="https://primusdigitalagency.vercel.app/og-image.jpg">',
+    '<meta property="og:image" content="https://primusdigitalagency.vercel.app/ar/og-image.jpg">');
+rep('<meta property="og:image:alt" content="Primus Digital · Where Excellence Begins. Software and SaaS, automation, film, and growth, from Zagazig, Egypt.">',
+    '<meta property="og:image:alt" content="Primus Digital · حيث يبدأ التميّز. برمجيات و SaaS، أتمتة، تصوير، ونمو. من الزقازيق، مصر.">');
+rep('<meta name="twitter:image" content="https://primusdigitalagency.vercel.app/og-image.jpg">',
+    '<meta name="twitter:image" content="https://primusdigitalagency.vercel.app/ar/og-image.jpg">');
+rep('<meta name="twitter:image:alt" content="Primus Digital · Where Excellence Begins.">',
+    '<meta name="twitter:image:alt" content="Primus Digital · حيث يبدأ التميّز.">');
+
 rep('<meta property="og:title" content="Digital Agency in Zagazig | Software, SaaS &amp; Growth | Primus Digital">',
     '<meta property="og:title" content="وكالة رقمية في الزقازيق | برمجيات و SaaS ونمو | Primus Digital">');
 rep('<meta property="og:description" content="One studio, the whole path. Software and SaaS, automation, film, and growth, engineered in Zagazig, Egypt. Every engagement is scoped, then quoted.">',
