@@ -1,6 +1,6 @@
 # Auth.md
 
-> Agent access and authentication policy for https://primusdigitalagency.vercel.app/
+> Agent access and authentication policy for https://primuseg.com/
 
 ## Summary
 

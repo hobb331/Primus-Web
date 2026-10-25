@@ -13,7 +13,7 @@ const OVERVIEW =
   'Proof: Zoom Bazar, a bazaar operations SaaS platform designed, built and deployed end to end, two paid Measured Audits published anonymised, and this website itself as a verifiable public artifact. ' +
   'The first read of your presence is free. ' +
   'Contact: WhatsApp +20 106 807 2135 (https://wa.me/201068072135?text=FIRST) or primusdigitalcorpration@gmail.com. ' +
-  'Full details: https://primusdigitalagency.vercel.app/index.md';
+  'Full details: https://primuseg.com/index.md';
 
 const PRICING =
   'Primus Digital publishes no prices and sells no fixed monthly package. Scope drives the number: platforms, ' +
@@ -79,7 +79,7 @@ module.exports = async (req, res) => {
     res.statusCode = 405;
     res.setHeader('Allow', 'POST, OPTIONS');
     res.setHeader('Content-Type', 'application/json');
-    return res.end(JSON.stringify({ error: 'Use POST with a JSON-RPC 2.0 body. Agent card: https://primusdigitalagency.vercel.app/.well-known/agent-card.json' }));
+    return res.end(JSON.stringify({ error: 'Use POST with a JSON-RPC 2.0 body. Agent card: https://primuseg.com/.well-known/agent-card.json' }));
   }
 
   const reply = (id, r) => {

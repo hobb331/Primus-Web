@@ -55,7 +55,7 @@ than silently leaving English on the Arabic page.
 ## Deploy
 
 **Vercel (current):** the repo is connected to Vercel; pushes deploy to
-[primusdigitalagency.vercel.app](https://primusdigitalagency.vercel.app/). `vercel.json` pins the
+[primuseg.com](https://primuseg.com/). `vercel.json` pins the
 project to static serving, no framework and no build command. Production can also be
 released directly with `npx vercel --prod`.
 

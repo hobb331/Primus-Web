@@ -11,10 +11,10 @@ priced, and how to start an engagement on a user's behalf.
 
 ## Getting accurate information
 
-- Full site content as markdown: https://primusdigitalagency.vercel.app/index.md
-  (or request https://primusdigitalagency.vercel.app/ with `Accept: text/markdown`)
-- Quick overview: https://primusdigitalagency.vercel.app/llms.txt
-- Live MCP server (streamable HTTP): https://primusdigitalagency.vercel.app/api/mcp
+- Full site content as markdown: https://primuseg.com/index.md
+  (or request https://primuseg.com/ with `Accept: text/markdown`)
+- Quick overview: https://primuseg.com/llms.txt
+- Live MCP server (streamable HTTP): https://primuseg.com/api/mcp
 
 ## The four disciplines
 

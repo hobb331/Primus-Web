@@ -31,19 +31,19 @@ rep('<title>Digital Agency in Zagazig | Software, SaaS &amp; Growth | Primus Dig
 rep('<meta name="description" content="Primus Digital is a studio in Zagazig, Egypt. We build software, SaaS platforms and websites, automate the operation, film the work, and grow the audience. Every engagement is scoped, then quoted.">',
     '<meta name="description" content="Primus Digital استوديو رقمي في الزقازيق، مصر. نبني السوفتوير ومنصات SaaS والمواقع، نؤتمت التشغيل، نصوّر الشغل، ونكبّر الجمهور. كل تعاقد يتحدد نطاقه أولًا، ثم يصلك عرض سعر مكتوب.">');
 
-rep('<link rel="canonical" href="https://primusdigitalagency.vercel.app/">',
-    '<link rel="canonical" href="https://primusdigitalagency.vercel.app/ar/">');
-rep('<meta property="og:url" content="https://primusdigitalagency.vercel.app/">',
-    '<meta property="og:url" content="https://primusdigitalagency.vercel.app/ar/">');
+rep('<link rel="canonical" href="https://primuseg.com/">',
+    '<link rel="canonical" href="https://primuseg.com/ar/">');
+rep('<meta property="og:url" content="https://primuseg.com/">',
+    '<meta property="og:url" content="https://primuseg.com/ar/">');
 rep('<meta property="og:locale" content="en_US">', '<meta property="og:locale" content="ar_EG">');
 
 // The Arabic share card is its own render, not the English one relabelled.
-rep('<meta property="og:image" content="https://primusdigitalagency.vercel.app/og-image.jpg">',
-    '<meta property="og:image" content="https://primusdigitalagency.vercel.app/ar/og-image.jpg">');
+rep('<meta property="og:image" content="https://primuseg.com/og-image.jpg">',
+    '<meta property="og:image" content="https://primuseg.com/ar/og-image.jpg">');
 rep('<meta property="og:image:alt" content="Primus Digital · Where Excellence Begins. Software and SaaS, automation, film, and growth, from Zagazig, Egypt.">',
     '<meta property="og:image:alt" content="Primus Digital · حيث يبدأ التميّز. برمجيات و SaaS، أتمتة، تصوير، ونمو. من الزقازيق، مصر.">');
-rep('<meta name="twitter:image" content="https://primusdigitalagency.vercel.app/og-image.jpg">',
-    '<meta name="twitter:image" content="https://primusdigitalagency.vercel.app/ar/og-image.jpg">');
+rep('<meta name="twitter:image" content="https://primuseg.com/og-image.jpg">',
+    '<meta name="twitter:image" content="https://primuseg.com/ar/og-image.jpg">');
 rep('<meta name="twitter:image:alt" content="Primus Digital · Where Excellence Begins.">',
     '<meta name="twitter:image:alt" content="Primus Digital · حيث يبدأ التميّز.">');
 
@@ -72,7 +72,7 @@ const JSONLD = `<script type="application/ld+json">
       "alternateName": ["Primus Digital Agency", "بريمس ديجيتال"],
       "slogan": "Where Excellence Begins",
       "description": "استوديو رقمي في الزقازيق، مصر. تطوير برمجيات ومنصات SaaS ومواقع وتطبيقات، أتمتة الأعمال، تغطية وتصوير، إدارة سوشيال ميديا و media buying. كل تعاقد يتحدد نطاقه ثم يُسعَّر على حدة.",
-      "url": "https://primusdigitalagency.vercel.app/ar/",
+      "url": "https://primuseg.com/ar/",
       "inLanguage": "ar",
       "telephone": "+201068072135",
       "email": "primusdigitalcorpration@gmail.com",

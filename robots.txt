@@ -2,4 +2,4 @@ User-agent: *
 Allow: /
 Content-Signal: search=yes, ai-input=yes, ai-train=yes
 
-Sitemap: https://primusdigitalagency.vercel.app/sitemap.xml
+Sitemap: https://primuseg.com/sitemap.xml

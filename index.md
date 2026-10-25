@@ -4,7 +4,7 @@ Digital studio in Zagazig, Sharqia, Egypt. We build the software, automate the
 operation, film the work, and grow the audience. One studio, the whole path.
 Not posted. Positioned.
 
-- Website: https://primusdigitalagency.vercel.app/
+- Website: https://primuseg.com/
 - WhatsApp: +20 106 807 2135 (https://wa.me/201068072135?text=FIRST)
 - Email: primusdigitalcorpration@gmail.com
 - Facebook: https://www.facebook.com/profile.php?id=61587403386997

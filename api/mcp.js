@@ -2,7 +2,7 @@
 // Read-only information tools about the studio: engagements, disciplines,
 // proof, contact. No prices are served: every engagement is scoped, then quoted.
 
-const SITE = 'https://primusdigitalagency.vercel.app';
+const SITE = 'https://primuseg.com';
 
 const ENGAGEMENTS = [
   { key: 'BUILD', name: 'Software, SaaS & Web', pricing: 'Scoped, then quoted per project', includes: ['SaaS platforms and web apps', 'Websites and landing systems', 'Mobile applications', 'Architecture, build, deployment'] },
@@ -48,7 +48,7 @@ const PROOF = [
   },
   {
     type: 'Public artifact',
-    name: 'This website (primusdigitalagency.vercel.app)',
+    name: 'This website (primuseg.com)',
     scope: 'Published as proof in its own right; every claim is verifiable from outside',
     capabilities: [
       'One static document, no build step, no framework, no third-party script',

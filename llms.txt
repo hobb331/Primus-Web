@@ -23,10 +23,10 @@ Key facts for agents:
 
 ## Resources
 
-- [Full site as markdown](https://primusdigitalagency.vercel.app/index.md): complete disciplines, method, proof, engagements, FAQ, and contact details
-- [Homepage](https://primusdigitalagency.vercel.app/): the canonical site (request with `Accept: text/markdown` for the markdown version)
-- [Agent skills index](https://primusdigitalagency.vercel.app/.well-known/agent-skills/index.json): skills for interacting with the agency
-- [API catalog](https://primusdigitalagency.vercel.app/.well-known/api-catalog): linkset of machine-readable resources
-- [MCP server](https://primusdigitalagency.vercel.app/.well-known/mcp/server-card.json): live MCP server (streamable HTTP at /api/mcp) with engagement, discipline, proof, and contact tools
-- [A2A agent card](https://primusdigitalagency.vercel.app/.well-known/agent-card.json): A2A concierge agent (JSON-RPC at /api/a2a) answering agency questions
-- [Auth policy](https://primusdigitalagency.vercel.app/auth.md): no authentication or registration required anywhere on this domain
+- [Full site as markdown](https://primuseg.com/index.md): complete disciplines, method, proof, engagements, FAQ, and contact details
+- [Homepage](https://primuseg.com/): the canonical site (request with `Accept: text/markdown` for the markdown version)
+- [Agent skills index](https://primuseg.com/.well-known/agent-skills/index.json): skills for interacting with the agency
+- [API catalog](https://primuseg.com/.well-known/api-catalog): linkset of machine-readable resources
+- [MCP server](https://primuseg.com/.well-known/mcp/server-card.json): live MCP server (streamable HTTP at /api/mcp) with engagement, discipline, proof, and contact tools
+- [A2A agent card](https://primuseg.com/.well-known/agent-card.json): A2A concierge agent (JSON-RPC at /api/a2a) answering agency questions
+- [Auth policy](https://primuseg.com/auth.md): no authentication or registration required anywhere on this domain
